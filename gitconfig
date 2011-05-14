@@ -1,0 +1,11 @@
+[user]
+	name = Mario Visic
+	email = mario@mariovisic.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[push] 
+  default = current
+[core]
+	excludesfile = /Users/mariovisic/.gitignore

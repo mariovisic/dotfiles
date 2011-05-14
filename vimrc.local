@@ -1,4 +1,4 @@
-color blackboard
+color ir_black
 
 " Remove left scrollbars
 set guioptions-=L
@@ -9,6 +9,6 @@ set guifont=Monaco:h14.00
 " Clear highlighted search items by pressing space
 nmap <SPACE> <SPACE>:noh<CR>
 
-"Directories for swp files
+" Directories for swp files
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
