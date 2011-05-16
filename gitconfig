@@ -10,4 +10,4 @@
 [core]
 	excludesfile = /Users/mariovisic/.gitignore
 [alias]
-  logg = "log --graph"
+  logg = "log --all --graph --decorate"
