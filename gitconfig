@@ -1,13 +1,13 @@
 [user]
-	name = Mario Visic
-	email = mario@mariovisic.com
+  name = Mario Visic
+  email = mario@mariovisic.com
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+  diff = auto
+  status = auto
+  branch = auto
 [push] 
   default = current
 [core]
-	excludesfile = /Users/mariovisic/.gitignore
+  excludesfile = /Users/mariovisic/.gitignore
 [alias]
   logg = "log --all --graph --decorate"
