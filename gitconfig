@@ -11,3 +11,4 @@
   excludesfile = /Users/mariovisic/.gitignore
 [alias]
   logg = "log --all --graph --decorate"
+  praise = "blame"
