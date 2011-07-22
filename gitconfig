@@ -11,4 +11,5 @@
   excludesfile = /Users/mariovisic/.gitignore
 [alias]
   logg = "log --all --graph --decorate"
+  signoff = '!git-signoff'
   praise = "blame"
