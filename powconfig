@@ -1,0 +1,2 @@
+export POW_TIMEOUT=5 * 60
+export POW_WORKERS=4
