@@ -8,7 +8,7 @@
 [push] 
   default = current
 [core]
-  excludesfile = /Users/mariovisic/.gitignore
+  excludesfile = ~/.gitignore
 [alias]
   logg = "log --all --graph --decorate"
   signoff = '!git-signoff'
