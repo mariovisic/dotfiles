@@ -3,11 +3,8 @@ require 'rake'
 desc 'symlink all dot files into the home directory'
 task :default do
   git_pull
-  Dir['*'].each do |file|
-    unless ['Rakefile', 'README.md'].include?(file)
-      link_file(file)
-    end
-  end
+  ignored_files = ['Rakefile', 'README.md']
+  Dir['*'].each { |file| link_file(file) unless ignored_files.include?(file) }
 end
 
 def git_pull
