@@ -1,5 +1,3 @@
-color ir_black
-
 " Remove left scrollbars
 set guioptions-=L
 
