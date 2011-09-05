@@ -16,3 +16,8 @@ export EDITOR="mvim"
 function using_gcc() {
   env CC="/usr/bin/gcc-4.2" ARCHFLAGS="-arch x86_64" ARCHS="x86_64" $*
 }
+
+# Autocompletion for git
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
