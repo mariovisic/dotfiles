@@ -8,7 +8,7 @@ hitch() {
 alias unhitch='hitch -u'
 
 # Default Editor (yay mac vim)
-export EDITOR="mvim"
+export EDITOR="mvim -f"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
