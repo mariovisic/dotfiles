@@ -21,6 +21,3 @@ function using_gcc() {
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
-
-# Ignore duplicates and some commands (ls) in history
-export HISTIGNORE="&:ls:ls *:[bf]g:exit"
