@@ -14,3 +14,5 @@ set directory=~/.vim/backup
 " Remove the functionality of the escape key (This should  force me to use
 " ctrl+c and ctrl+[ instead of reaching for escape)
 imap <ESC> <Nop>
+
+color jellybeans+
