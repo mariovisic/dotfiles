@@ -1,2 +1,2 @@
 export POW_TIMEOUT=1800 # 30 minute timeout period
-export POW_WORKERS=8
+export POW_WORKERS=$CORES

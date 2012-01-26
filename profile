@@ -1,6 +1,9 @@
 # Default Paths
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin"
 
+# Number of CPU cores (used for pow config)
+export CORES=`sysctl hw.ncpu | awk '{print $2}'`
+
 hitch() {
   command hitch "$@"
     if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
