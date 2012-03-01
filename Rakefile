@@ -4,12 +4,17 @@ desc 'symlink all dot files into the home directory'
 task :default do
   @ignored_files = ['Rakefile', 'README.md']
 
-  perform("Updating dotfiles") { git_pull }
+  perform("Updating dotfiles")   { git_pull }
+  perform("Updating submodules") { git_update_submodules }
   link_files
 end
 
 def git_pull
   `git pull`
+end
+
+def git_update_submodules
+  `git submodule update --recursive`
 end
 
 def link_files
