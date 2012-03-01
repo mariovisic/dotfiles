@@ -19,3 +19,12 @@ set directory=~/.vimbackup
 imap <ESC> <Nop>
 
 color getafe
+
+" Enable pathogen for loading plugins
+call pathogen#infect()
+
+" Highlight syntax
+syntax on
+
+" Indent based on file type
+filetype plugin indent on
