@@ -60,6 +60,22 @@
   " Do not wrap lines by default
   set nowrap
 
+  " Show invisible characters
+  set list
+
+  " Set which invisible characters to show
+  set listchars=""
+  set listchars=tab:\ \
+  set listchars+=trail:.
+  set listchars+=extends:>
+  set listchars+=precedes:<
+
+  " Highlight incrimental searches and use smart case matching
+  set hlsearch
+  set incsearch
+  set ignorecase
+  set smartcase
+
 """""""""""""""""""""""""
 " Other editor settings "
 """""""""""""""""""""""""
@@ -84,3 +100,12 @@
 
   " This allows the powerline to always be shown (not just when a split is open).
   set laststatus=2
+
+"""""""
+" Ack "
+"""""""
+
+  " Command + Shift + F opens ack search
+  nmap <D-F> :Ack<space>
+
+
