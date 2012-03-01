@@ -28,3 +28,13 @@ syntax on
 
 " Indent based on file type
 filetype plugin indent on
+
+""""""""""""
+" NERDTREE "
+""""""""""""
+
+  " \n to toggle
+  nmap <Leader>n :NERDTreeToggle<CR>
+
+  " Open on boot if no file is specified
+  autocmd vimenter * if !argc() | NERDTree | endif
