@@ -22,12 +22,22 @@ color getafe
 
 " Enable pathogen for loading plugins
 call pathogen#infect()
+call pathogen#helptags()
 
 " Highlight syntax
 syntax on
 
 " Indent based on file type
 filetype plugin indent on
+
+" Show line numbers
+set number
+
+" Default indent settings
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
 
 """"""""""""
 " NERDTREE "
@@ -38,3 +48,5 @@ filetype plugin indent on
 
   " Open on boot if no file is specified
   autocmd vimenter * if !argc() | NERDTree | endif
+
+  let g:nerdtree_tabs_open_on_gui_startup=0
