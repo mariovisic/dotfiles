@@ -1,6 +1,0 @@
-" Remove the auto commands for entering window (One of them closes all windows
-" if only nerd Tree is open (which is undesirable)
-autocmd! WinEnter *
-
-" Set the theme
-color jellybeans+
