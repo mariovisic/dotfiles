@@ -1,50 +1,77 @@
-" Remove left scrollbars
-set guioptions-=L
+""""""""""""
+" Pathogen "
+""""""""""""
 
-" Remove the top toolbar
-set guioptions-=T
+  " Enable pathogen for loading plugins
+  call pathogen#infect()
+  call pathogen#helptags()
 
-" Default font
-set guifont=Monaco:h14.00
 
-" Clear highlighted search items by pressing space
-nmap <SPACE> <SPACE>:noh<CR>
+"""""""""""""""""""""""""""""
+" Editor appearance changes "
+"""""""""""""""""""""""""""""
 
-" Directories for swp files
-set backupdir=~/.vimbackup
-set directory=~/.vimbackup
+  " Remove left scrollbars
+  set guioptions-=L
 
-" Remove the functionality of the escape key (This should  force me to use
-" ctrl+c and ctrl+[ instead of reaching for escape)
-imap <ESC> <Nop>
+  " Remove the top toolbar
+  set guioptions-=T
 
-color getafe
+  " Default font
+  set guifont=Monaco:h14.00
 
-" Enable pathogen for loading plugins
-call pathogen#infect()
-call pathogen#helptags()
+  " Color scheme
+  color getafe
 
-" Highlight syntax
-syntax on
+  " Show line numbers
+  set number
 
-" Indent based on file type
-filetype plugin indent on
+"""""""""""""""""""
+" Custom Mappings "
+"""""""""""""""""""
 
-" Show line numbers
-set number
+  " Clear highlighted search items by pressing space
+  nmap <SPACE> <SPACE>:noh<CR>
 
-" Default indent settings
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
+  " \n to toggle Nerdtree
+  nmap <Leader>n :NERDTreeToggle<CR>
+
+  " Remove the functionality of the escape key (This should  force me to use
+  " ctrl+c and ctrl+[ instead of reaching for escape)
+  imap <ESC> <Nop>
+
+
+"""""""""""""""""""""""""
+" Basic editor settings "
+"""""""""""""""""""""""""
+
+  " Highlight syntax
+  syntax on
+
+  " Indent based on file type
+  filetype plugin indent on
+
+  " Default indent settings (2 spaces with no tabs)
+  set tabstop=2
+  set shiftwidth=2
+  set softtabstop=2
+  set expandtab
+
+  " Do not wrap lines by default
+  set nowrap
+
+"""""""""""""""""""""""""
+" Other editor settings "
+"""""""""""""""""""""""""
+
+  " Directories for swp files
+  set backupdir=~/.vimbackup
+  set directory=~/.vimbackup
+
 
 """"""""""""
 " NERDTREE "
 """"""""""""
-
-  " \n to toggle
-  nmap <Leader>n :NERDTreeToggle<CR>
 
   " Open on boot if no file is specified
   autocmd vimenter * if !argc() | NERDTree | endif
