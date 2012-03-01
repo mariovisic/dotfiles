@@ -18,4 +18,4 @@ set directory=~/.vimbackup
 " ctrl+c and ctrl+[ instead of reaching for escape)
 imap <ESC> <Nop>
 
-color jellybeans+
+color getafe
