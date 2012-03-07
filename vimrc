@@ -109,3 +109,7 @@
   nmap <D-F> :Ack<space>
 
 
+
+  " Reload vim after editing the vimrc
+  au! BufWritePost .vimrc source %
+  au! BufWritePost .gvimrc source %
