@@ -118,6 +118,7 @@
 """"""""""
 " Ctrl-P "
 """"""""""
+
   " Do not search git objects or temporary files
   set wildignore+=*/.git/objects/*
   set wildignore+=*/tmp/*
