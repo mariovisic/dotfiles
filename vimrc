@@ -113,3 +113,11 @@
   " Reload vim after editing the vimrc
   au! BufWritePost .vimrc source %
   au! BufWritePost .gvimrc source %
+
+
+""""""""""
+" Ctrl-P "
+""""""""""
+  " Do not search git objects or temporary files
+  set wildignore+=*/.git/objects/*
+  set wildignore+=*/tmp/*
