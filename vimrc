@@ -76,6 +76,11 @@
   set ignorecase
   set smartcase
 
+  " Ignore files in git and tmp files or sass cache
+  set wildignore+=*/.git/*
+  set wildignore+=*/tmp/*
+  set wildignore+=*/.sass-cache/*
+
 """""""""""""""""""""""""
 " Other editor settings "
 """""""""""""""""""""""""
@@ -83,6 +88,10 @@
   " Directories for swp files
   set backupdir=~/.vimbackup
   set directory=~/.vimbackup
+
+  " Reload vim after editing the vimrc
+  au! BufWritePost .vimrc source %
+  au! BufWritePost .gvimrc source %
 
 
 """"""""""""
@@ -107,18 +116,3 @@
 
   " Command + Shift + F opens ack search
   nmap <D-F> :Ack<space>
-
-
-
-  " Reload vim after editing the vimrc
-  au! BufWritePost .vimrc source %
-  au! BufWritePost .gvimrc source %
-
-
-""""""""""
-" Ctrl-P "
-""""""""""
-
-  " Do not search git objects or temporary files
-  set wildignore+=*/.git/objects/*
-  set wildignore+=*/tmp/*
