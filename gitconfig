@@ -13,3 +13,5 @@
   logg = "log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(magenta)<%an>%Creset' --abbrev-commit --date=relative"
   signoff = '!git-signoff'
   praise = "blame"
+[help]
+  autocorrect = -1
