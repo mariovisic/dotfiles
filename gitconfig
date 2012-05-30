@@ -14,5 +14,6 @@
   signoff = '!git-signoff'
   praise = "blame"
   authors = "shortlog -sn"
+  ss = "status -sb"
 [help]
   autocorrect = -1
