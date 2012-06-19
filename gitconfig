@@ -17,3 +17,5 @@
   ss = "status -sb"
 [help]
   autocorrect = -1
+[github]
+  user = mariovisic
