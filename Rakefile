@@ -4,8 +4,9 @@ desc 'symlink all dot files into the home directory'
 task :default do
   @ignored_files = ['Rakefile', 'README.md']
 
-  perform("Updating dotfiles")   { git_pull }
-  perform("Updating submodules") { git_update_submodules }
+  perform("Creating vim backups folder") { create_vim_backups_folder }
+  perform("Updating dotfiles")           { git_pull }
+  perform("Updating submodules")         { git_update_submodules }
   link_files
 end
 
@@ -14,7 +15,7 @@ def git_pull
 end
 
 def git_update_submodules
-  `git submodule update --recursive`
+  `git submodule update --init --recursive`
 end
 
 def link_files
@@ -29,6 +30,10 @@ def link_file(file)
       `ln -s "$PWD/#{file}" "#{home}/.#{file}"`
     end
   end
+end
+
+def create_vim_backups_folder
+`mkdir -p ~/.vimbackup`
 end
 
 def perform(name, &block)
