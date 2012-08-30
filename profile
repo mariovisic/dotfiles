@@ -4,11 +4,16 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X
 # Number of CPU cores (used for pow config)
 export CORES=`sysctl hw.ncpu | awk '{print $2}'`
 
+
+# Hitch for pair programming
 hitch() {
   command hitch "$@"
     if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
 }
 alias unhitch='hitch -u'
+
+# Javascript console
+alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 
 # Default Editor (yay mac vim)
 export EDITOR="vim"
