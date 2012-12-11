@@ -15,6 +15,9 @@ alias unhitch='hitch -u'
 # Javascript console
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 
+# Run ruby default rake task and git push
+alias push='rake && git push'
+
 # Default Editor (yay mac vim)
 export EDITOR="vim"
 
