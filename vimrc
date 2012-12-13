@@ -116,3 +116,19 @@
 
   " Command + Shift + F opens ack search
   nmap <D-F> :Ack<space>
+
+"""""""""
+" ctrlp "
+"""""""""
+
+  " Ignore temoprary swap and zip files
+  set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+  " Ignore bundler cached gems
+  set wildignore+=*/vendor/cache/*
+
+  " Ignore the git folder
+  set wildignore+=*/.git/*
+
+  " Ignore Jasmine headless temporary files
+  set wildignore+=*/.jhw-cache/*
