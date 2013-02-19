@@ -40,6 +40,8 @@
   " ctrl+c and ctrl+[ instead of reaching for escape)
   imap <ESC> <Nop>
 
+  " Press ` twice to toggle the previous buffer
+  map `` <C-^>
 
 """""""""""""""""""""""""
 " Basic editor settings "
