@@ -21,6 +21,7 @@ alias push='bundle && rake db:migrate && rake && git push'
 # Default Editor (yay mac vim)
 export EDITOR="vim"
 
+# RVM Setup
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # using_gcc for 64btt compiling on lion (solves compatability issues)
@@ -45,3 +46,6 @@ export PGOPTIONS='-c client_min_messages=WARNING'
 
 # Ruby 2.0 SSL fix
 export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
+
+# Source the bash config
+source ~/.bashrc
