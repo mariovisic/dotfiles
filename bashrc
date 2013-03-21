@@ -49,8 +49,16 @@ function set_git_branch {
     branch=${BASH_REMATCH[1]}
   fi
 
+  # Check for any stashes
+  git_stash="$(git stash list 2> /dev/null | tail -n1)"
+  if [[ ${git_stash} != "" ]]; then
+    stash=" ^"
+  else
+    stash=""
+  fi
+
   # Set the final branch string.
-  BRANCH="${state}(${branch})${remote}${COLOR_NONE} "
+  BRANCH="${state}(${branch})${remote}${stash}${COLOR_NONE} "
 }
 
 # Return the prompt symbol to use, colorized based on the return value of the
