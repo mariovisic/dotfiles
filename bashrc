@@ -73,6 +73,8 @@ function set_prompt_symbol () {
 
 # Set the full bash prompt.
 function set_bash_prompt () {
+  update_terminal_cwd
+
   # Set the PROMPT_SYMBOL variable. We do this first so we don't lose the
   # return value of the last command.
   set_prompt_symbol $?
