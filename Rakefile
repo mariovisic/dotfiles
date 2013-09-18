@@ -27,15 +27,17 @@ end
 def link_file(file)
   home = `echo $HOME`.strip
 
-  unless File.exists?("#{home}/.#{file}")
-    perform "linking ~/.#{file}" do
-      `ln -s "$PWD/#{file}" "#{home}/.#{file}"`
-    end
+  if File.exists?("#{home}/.#{file}")
+    `rm "#{home}/.#{file}"`
+  end
+
+  perform "linking ~/.#{file}" do
+    `ln -s "$PWD/#{file}" "#{home}/.#{file}"`
   end
 end
 
 def create_vim_backups_folder
-`mkdir -p ~/.vimbackup`
+  `mkdir -p ~/.vimbackup`
 end
 
 def perform(name, &block)
