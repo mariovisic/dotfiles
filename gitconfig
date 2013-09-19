@@ -15,6 +15,7 @@
   praise = "blame"
   authors = "shortlog -sn"
   ss = "status -sb"
+  bump = "commit -m 'bump' --allow-empty"
 [help]
   autocorrect = -1
 [github]
