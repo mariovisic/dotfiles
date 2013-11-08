@@ -17,9 +17,6 @@
 # print a break between results from different files
 --group
 
-# All file types searched
---all-types
-
 # add rake extension to ack's notion of Ruby files
 --type-add=ruby=rake
 
