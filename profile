@@ -22,7 +22,11 @@ alias push='bundle && rake db:migrate && rake && git push'
 export EDITOR="vim"
 
 # RVM Setup
+rvm_project_rvmrc=1
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# Use binstubs if they are available
+export PATH="./bin:$PATH"
 
 # using_gcc for 64btt compiling on lion (solves compatability issues)
 function using_gcc() {
