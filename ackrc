@@ -20,8 +20,10 @@
 # add rake extension to ack's notion of Ruby files
 --type-add=ruby=rake
 
-# Introduce Haml to ack
+# Add extra types
 --type-set=haml=.haml
+--type-set=sass=.sass
+--type-set=coffeescript=.coffee
 
 # Ignore some folders in rails that aren't terribly useful
 --ignore-dir=log
