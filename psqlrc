@@ -1,0 +1,24 @@
+-- remove messages from this psqlrc file on each invocation
+\set QUIET 1
+
+-- don't rollback the entire fucking transaction
+-- if you typo a sql command, but only in interactive mode
+\set ON_ERROR_ROLLBACK interactive
+
+-- automatically switch between extended and normal
+-- depending on how wide the output is
+\x auto
+
+-- a prompt wtih transaction information
+\set PROMPT1 '%[%033[33;1m%]%x%[%033[0m%]%[%033[1m%]%/%[%033[0m%]%R%# '
+
+--nice timestamps
+set timezone to 'America/Los_Angeles';
+
+--nulls are ghosts
+\pset null (null)
+
+-- always show how long a query takes
+\timing
+
+\unset QUIET
