@@ -46,8 +46,5 @@ export RUBY_GC_OLDMALLOC_LIMIT=512000000
 # Do not display postgres info unless it is a warning or error.
 export PGOPTIONS='-c client_min_messages=WARNING'
 
-# Ruby 2.0 SSL fix
-export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
-
 # Source the bash config
 source ~/.bashrc
