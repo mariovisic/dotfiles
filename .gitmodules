@@ -46,3 +46,6 @@
 [submodule "vim/bundle/go"]
 	path = vim/bundle/go
 	url = git@github.com:fsouza/go.vim.git
+[submodule "vim/bundle/ctrlp-cmatcher"]
+	path = vim/bundle/ctrlp-cmatcher
+	url = git@github.com:JazzCore/ctrlp-cmatcher.git
