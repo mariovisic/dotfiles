@@ -6,7 +6,7 @@
   status = auto
   branch = auto
 [push]
-  default = simple
+  default = current
 [core]
   excludesfile = ~/.gitignore
 [alias]
@@ -22,3 +22,7 @@
   user = mariovisic
 [merge]
   ff = true
+[buildkite]
+  apikey = 12c9e037e227e106a427efe082d5334c
+[buildbox]
+  apikey = 12c9e037e227e106a427efe082d5334c
