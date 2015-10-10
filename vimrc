@@ -78,6 +78,9 @@
   set ignorecase
   set smartcase
 
+  " Show graphical menu when autocompleting
+  set wildmenu
+
   " Ignore files in git and tmp files or sass cache
   set wildignore+=*/.git/*
   set wildignore+=*/tmp/*
