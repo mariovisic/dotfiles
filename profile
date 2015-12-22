@@ -35,14 +35,6 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
-# Ruby GC Tuning
-export RUBY_GC_HEAP_INIT_SLOTS=10000000
-export RUBY_GC_HEAP_FREE_SLOTS=10000000
-export RUBY_GC_HEAP_GROWTH_MAX_SLOTS=10000000
-export RUBY_GC_HEAP_GROWTH_FACTOR=1.25
-export RUBY_GC_MALLOC_LIMIT=512000000
-export RUBY_GC_OLDMALLOC_LIMIT=512000000
-
 # Do not display postgres info unless it is a warning or error.
 export PGOPTIONS='-c client_min_messages=WARNING'
 
