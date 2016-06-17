@@ -98,6 +98,8 @@
   au! BufWritePost .vimrc source %
   au! BufWritePost .gvimrc source %
 
+  " Spell check git commit messages
+  autocmd FileType gitcommit setlocal spell
 
 """"""""""""
 " NERDTREE "
