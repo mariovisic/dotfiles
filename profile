@@ -2,7 +2,7 @@
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/share/npm/bin"
 
 # Number of CPU cores (used for pow config)
-export CORES=`sysctl hw.ncpu | awk '{print $2}'`
+export CORES=`sysctl hw.physicalcpu | awk '{print $2}'`
 
 
 # Hitch for pair programming
