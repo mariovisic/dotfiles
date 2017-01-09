@@ -1,33 +1,33 @@
 [submodule "vim/bundle/vim-powerline"]
 	path = vim/bundle/vim-powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
+	url = git@github.com:Lokaltog/vim-powerline.git
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
+	url = git@github.com:scrooloose/nerdtree.git
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
-	url = https://github.com/kien/ctrlp.vim.git
+	url = git@github.com:kien/ctrlp.vim.git
 [submodule "vim/bundle/align"]
 	path = vim/bundle/align
-	url = https://github.com/vim-scripts/Align.git
+	url = git@github.com:vim-scripts/Align.git
 [submodule "vim/bundle/vim-rails"]
 	path = vim/bundle/vim-rails
 	url = git://github.com/tpope/vim-rails.git
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter.git
+	url = git@github.com:scrooloose/nerdcommenter.git
 [submodule "vim/bundle/gist-vim"]
 	path = vim/bundle/gist-vim
-	url = https://github.com/mattn/gist-vim.git
+	url = git@github.com:mattn/gist-vim.git
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/ack-vim"]
 	path = vim/bundle/ack-vim
-	url = https://github.com/mileszs/ack.vim.git
+	url = git@github.com:mileszs/ack.vim.git
 [submodule "vim/bundle/vim-coffee-script"]
 	path = vim/bundle/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
+	url = git@github.com:kchmck/vim-coffee-script.git
 [submodule "vim/bundle/vim-indent-guides"]
 	path = vim/bundle/vim-indent-guides
 	url = git://github.com/nathanaelkane/vim-indent-guides.git
@@ -36,10 +36,10 @@
 	url = git://github.com/tsaleh/vim-supertab.git
 [submodule "vim/bundle/ruby-matchit"]
 	path = vim/bundle/ruby-matchit
-	url = https://github.com/vim-scripts/ruby-matchit.git
+	url = git@github.com:vim-scripts/ruby-matchit.git
 [submodule "vim/bundle/matchit"]
 	path = vim/bundle/matchit
-	url = https://github.com/edsono/vim-matchit.git
+	url = git@github.com:edsono/vim-matchit.git
 [submodule "vim/bundle/slim"]
 	path = vim/bundle/slim
 	url = git@github.com:slim-template/vim-slim.git
