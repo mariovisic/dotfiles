@@ -19,12 +19,12 @@ function set_git_branch {
   git_status="$(git status 2> /dev/null)"
 
   # Set color based on clean/staged/dirty.
-  if [[ ${git_status} =~ "working directory clean" ]]; then
-    state="${GREEN}"
-  elif [[ ${git_status} =~ "Changes to be committed" ]]; then
+  if [[ ${git_status} =~ "Changes to be committed" ]]; then
     state="${YELLOW}"
-  else
+  elif [[ ${git_status} =~ "Changes not staged for commit" ]]; then
     state="${RED}"
+  elif [[ ${git_status} =~ "Your branch is up-to-date" ]]; then
+    state="${GREEN}"
   fi
 
   # Set arrow icon based on status against remote.
