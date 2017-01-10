@@ -23,7 +23,7 @@ function set_git_branch {
     state="${YELLOW}"
   elif [[ ${git_status} =~ "Changes not staged for commit" ]]; then
     state="${RED}"
-  elif [[ ${git_status} =~ "Your branch is up-to-date" ]]; then
+  else
     state="${GREEN}"
   fi
 
