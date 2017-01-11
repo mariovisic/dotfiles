@@ -139,6 +139,3 @@
 
   " Ignore Jasmine headless temporary files
   set wildignore+=*/.jhw-cache/*
-
-  " Use faster C matcher
-  let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}
