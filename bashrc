@@ -10,7 +10,7 @@ LIGHT_GREEN="\[\033[1;32m\]"
 
 # Detect whether the current directory is a git repository.
 function is_git_repository {
-  git branch > /dev/null 2>&1
+  [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1
 }
 
 # Determine the branch/state information for this git repository.
