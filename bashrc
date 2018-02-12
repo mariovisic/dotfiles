@@ -73,11 +73,12 @@ function set_prompt_symbol () {
 
 # Set the full bash prompt.
 function set_bash_prompt () {
+  LAST_EXIT_STATUS=$?
   update_terminal_cwd
 
   # Set the PROMPT_SYMBOL variable. We do this first so we don't lose the
   # return value of the last command.
-  set_prompt_symbol $?
+  set_prompt_symbol $LAST_EXIT_STATUS
 
   # Set the BRANCH variable.
   if is_git_repository ; then
