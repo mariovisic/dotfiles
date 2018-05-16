@@ -33,7 +33,7 @@
 	url = git://github.com/nathanaelkane/vim-indent-guides.git
 [submodule "vim/bundle/vim-supertab"]
 	path = vim/bundle/vim-supertab
-	url = git://github.com/tsaleh/vim-supertab.git
+	url = git://github.com/ervandew/supertab.git
 [submodule "vim/bundle/ruby-matchit"]
 	path = vim/bundle/ruby-matchit
 	url = git@github.com:vim-scripts/ruby-matchit.git
