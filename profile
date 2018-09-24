@@ -25,6 +25,9 @@ export EDITOR="vim"
 rvm_project_rvmrc=1
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+# nodenv setup
+eval "$(nodenv init -)"
+
 # using_gcc for 64btt compiling on lion (solves compatability issues)
 function using_gcc() {
   env CC="/usr/bin/gcc-4.2" ARCHFLAGS="-arch x86_64" ARCHS="x86_64" $*
