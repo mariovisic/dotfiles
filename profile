@@ -43,3 +43,6 @@ export PGOPTIONS='-c client_min_messages=WARNING'
 
 # Source the bash config
 source ~/.bashrc
+
+# Add rust to the current path
+export PATH="$HOME/.cargo/bin:$PATH"
