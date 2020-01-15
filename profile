@@ -43,3 +43,6 @@ export PGOPTIONS='-c client_min_messages=WARNING'
 
 # Source the bash config
 source ~/.bashrc
+
+# Ignore warning in OSX Catalina about using zsh
+export BASH_SILENCE_DEPRECATION_WARNING=1
