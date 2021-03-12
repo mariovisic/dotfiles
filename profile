@@ -41,12 +41,15 @@ fi
 # Do not display postgres info unless it is a warning or error.
 export PGOPTIONS='-c client_min_messages=WARNING'
 
-# Source the bash config
-source ~/.bashrc
-
 # Ignore warning in OSX Catalina about using zsh
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # asdf Setup
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+# Git status in prompt (brew install romkatv/gitstatus/gitstatus)
+source $(brew --prefix)/opt/gitstatus/gitstatus.prompt.sh
+
+# Source the bash config
+source ~/.bashrc
