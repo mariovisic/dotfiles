@@ -46,3 +46,7 @@ source ~/.bashrc
 
 # Ignore warning in OSX Catalina about using zsh
 export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# asdf Setup
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
