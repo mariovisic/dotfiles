@@ -74,7 +74,7 @@ function set_prompt_symbol () {
 # Set the full bash prompt.
 function set_bash_prompt () {
   LAST_EXIT_STATUS=$?
-  update_terminal_cwd
+  update_terminal_cwd 2> /dev/null
 
   # Set the PROMPT_SYMBOL variable. We do this first so we don't lose the
   # return value of the last command.
