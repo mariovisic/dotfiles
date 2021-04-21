@@ -45,8 +45,7 @@ export PGOPTIONS='-c client_min_messages=WARNING'
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # asdf Setup
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+. $(brew --prefix asdf)/asdf.sh
 
 # Git status in prompt (brew install romkatv/gitstatus/gitstatus)
 source $(brew --prefix)/opt/gitstatus/gitstatus.prompt.sh
