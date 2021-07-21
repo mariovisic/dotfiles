@@ -1,4 +1,5 @@
-export PATH="/opt/homebrew/bin:$PATH"
+# Setup homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Number of CPU cores (used for pow config)
 export CORES=`sysctl hw.physicalcpu | awk '{print $2}'`
