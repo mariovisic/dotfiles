@@ -22,3 +22,5 @@
   user = mariovisic
 [merge]
   ff = true
+[pull]
+  ff = only
