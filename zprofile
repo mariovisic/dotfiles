@@ -16,5 +16,8 @@ source $(brew --prefix asdf)/asdf.sh
 # Git status in prompt (brew install romkatv/gitstatus/gitstatus)
 source $(brew --prefix)/opt/gitstatus/gitstatus.prompt.zsh
 
+# Setup direnv (brew install direnv)
+eval "$(direnv hook zsh)"
+
 # Source the zsh config
 source ~/.zshrc
