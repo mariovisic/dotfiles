@@ -11,13 +11,10 @@ export EDITOR="vim"
 export PGOPTIONS='-c client_min_messages=WARNING'
 
 # asdf Setup (brew install asdf)
-source $(brew --prefix asdf)/asdf.sh
+source $(brew --prefix asdf)/libexec/asdf.sh
 
 # Git status in prompt (brew install romkatv/gitstatus/gitstatus)
 source $(brew --prefix)/opt/gitstatus/gitstatus.prompt.zsh
 
 # Setup direnv (brew install direnv)
 eval "$(direnv hook zsh)"
-
-# Source the zsh config
-source ~/.zshrc
