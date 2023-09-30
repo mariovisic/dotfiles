@@ -12,7 +12,7 @@
 	url = git@github.com:vim-scripts/Align.git
 [submodule "vim/bundle/vim-rails"]
 	path = vim/bundle/vim-rails
-	url = git://github.com/tpope/vim-rails.git
+	url = git@github.com:tpope/vim-rails.git
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
 	url = git@github.com:scrooloose/nerdcommenter.git
@@ -21,7 +21,7 @@
 	url = git@github.com:mattn/gist-vim.git
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive.git
+	url = git@github.com:tpope/vim-fugitive.git
 [submodule "vim/bundle/ack-vim"]
 	path = vim/bundle/ack-vim
 	url = git@github.com:mileszs/ack.vim.git
@@ -30,10 +30,10 @@
 	url = git@github.com:kchmck/vim-coffee-script.git
 [submodule "vim/bundle/vim-indent-guides"]
 	path = vim/bundle/vim-indent-guides
-	url = git://github.com/nathanaelkane/vim-indent-guides.git
+	url = git@github.com:nathanaelkane/vim-indent-guides.git
 [submodule "vim/bundle/vim-supertab"]
 	path = vim/bundle/vim-supertab
-	url = git://github.com/ervandew/supertab.git
+	url = git@github.com:ervandew/supertab.git
 [submodule "vim/bundle/ruby-matchit"]
 	path = vim/bundle/ruby-matchit
 	url = git@github.com:vim-scripts/ruby-matchit.git
