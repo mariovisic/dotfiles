@@ -2,12 +2,13 @@ require 'rake'
 
 desc 'symlink all dot files into the home directory'
 task :default do
-  @ignored_files = ['Rakefile', 'README.md']
+  @ignored_files = ['Rakefile', 'README.md', '.nvim.init.lua']
 
   perform("Creating vim backups folder") { create_vim_backups_folder }
   perform("Updating dotfiles")           { git_pull }
-  perform("Updating submodules")         { git_update_submodules }
+  # perform("Updating submodules")         { git_update_submodules }
   link_files
+  link_nvim_config
 end
 
 def git_pull
@@ -24,16 +25,21 @@ def link_files
   Dir['*'].each { |file| link_file(file) unless @ignored_files.include?(file) }
 end
 
-def link_file(file)
+def link_file(file, new_location = nil)
   home = `echo $HOME`.strip
+  new_location ||= "#{file}"
 
-  if File.exists?("#{home}/.#{file}")
-    `rm "#{home}/.#{file}"`
+  if File.exists?("#{home}/.#{new_location}")
+    `rm "#{home}/.#{new_location}"`
   end
 
-  perform "linking ~/.#{file}" do
-    `ln -s "$PWD/#{file}" "#{home}/.#{file}"`
+  perform "linking ~/.#{new_location}" do
+    `ln -s "$PWD/#{file}" "#{home}/.#{new_location}"`
   end
+end
+
+def link_nvim_config
+  link_file('.nvim.init.lua', 'config/nvim/init.lua')
 end
 
 def create_vim_backups_folder
