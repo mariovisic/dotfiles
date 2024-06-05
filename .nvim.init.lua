@@ -67,6 +67,8 @@ local mason_spec = {
   opts = {}
 }
 
+-- 
+
 -- mason-lspconfig uses mason to install language servers and configures neovim
 -- to use them.
 local mason_lspconfig_spec = {
@@ -95,6 +97,10 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Install plugins using lazy.nvim.
 require("lazy").setup({
+  'preservim/nerdtree', -- TODO: Lookup newer alternatives --
+  'powerline/powerline', -- TODO: Customize, (possibly replace with something in lua) currently shows very little info --
+  'ctrlpvim/ctrlp.vim', -- TODO: Lookup faster and more feature rich alternatives --
+  'mileszs/ack.vim', -- TODO: Replace with something newer, possibly ctrlp+ack successor can be the same plugin --
   cmp_spec,
   lspconfig_spec,
   luasnip_spec,
