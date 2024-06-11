@@ -6,10 +6,14 @@ let &packpath = &runtimepath
 source ~/.vimrc
 ]])
 
+-- Use 2 spaces instead of tabs for indentation
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 vim.o.expandtab = true
+
+-- Use the system clipboard when yanking/pasting
+vim.api.nvim_set_option("clipboard","unnamed")
 
 -- nvim-lspconfig configures neovim to talk to language servers.
 local lspconfig_spec = {
