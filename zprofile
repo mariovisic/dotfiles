@@ -10,11 +10,19 @@ export EDITOR="vim"
 # Do not display postgres info unless it is a warning or error.
 export PGOPTIONS='-c client_min_messages=WARNING'
 
-# asdf Setup (brew install asdf)
-source $(brew --prefix asdf)/libexec/asdf.sh
-
 # Git status in prompt (brew install romkatv/gitstatus/gitstatus)
 source $(brew --prefix)/opt/gitstatus/gitstatus.prompt.zsh
 
-# Setup direnv (brew install direnv)
-eval "$(direnv hook zsh)"
+# Setup Mise
+eval "$(mise activate zsh --shims)"
+
+# Ferocia specific android setup
+if [ -z ${ANDROID_SDK_ROOT+x} ]; then
+  export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+  export PATH=$ANDROID_SDK_ROOT/emulator:$PATH
+  export PATH=$ANDROID_SDK_ROOT/tools:$PATH
+  export PATH=$ANDROID_SDK_ROOT/tools/bin:$PATH
+  export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
+  export PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$PATH
+fi
+
