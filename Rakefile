@@ -2,23 +2,16 @@ require 'rake'
 
 desc 'symlink all dot files into the home directory'
 task :default do
-  @ignored_files = ['Rakefile', 'README.md', '.nvim.init.lua']
+  @ignored_files = ['Rakefile', 'README.md', 'nvim.init.lua']
 
-  perform("Creating vim backups folder") { create_vim_backups_folder }
-  perform("Updating dotfiles")           { git_pull }
-  # perform("Updating submodules")         { git_update_submodules }
+  perform("Creating empty folders") { create_folders }
+  perform("Updating dotfiles")      { git_pull }
   link_files
   link_nvim_config
 end
 
 def git_pull
   `git pull`
-end
-
-def git_update_submodules
-  `git submodule update --init --recursive`
-  `git submodule foreach git checkout master`
-  `git submodule foreach git pull`
 end
 
 def link_files
@@ -39,10 +32,12 @@ def link_file(file, new_location = nil)
 end
 
 def link_nvim_config
-  link_file('.nvim.init.lua', 'config/nvim/init.lua')
+
+  link_file('nvim.init.lua', 'config/nvim/init.lua')
 end
 
-def create_vim_backups_folder
+def create_folders
+  `mkdir -p ~/.config/nvim`
   `mkdir -p ~/.vimbackup`
 end
 
