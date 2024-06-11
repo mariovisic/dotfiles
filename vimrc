@@ -1,12 +1,3 @@
-""""""""""""
-" Pathogen "
-""""""""""""
-
-  " Enable pathogen for loading plugins
-  call pathogen#infect()
-  call pathogen#helptags()
-
-
 """""""""""""""""""""""""""""
 " Editor appearance changes "
 """""""""""""""""""""""""""""
