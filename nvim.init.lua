@@ -111,6 +111,16 @@ local telescope_spec = {
   end,
 }
 
+local gitblame_spec = {
+  'f-person/git-blame.nvim',
+  opts = {
+    -- git-blame  does not let you change the color of the message, but you can
+    -- changer its gropu, Float is not significant, other than the colour is a
+    -- nice light brown :)
+    highlight_group = 'Float'
+  }
+}
+
 -- Install lazy.nvim from GitHub.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
@@ -133,6 +143,7 @@ require("lazy").setup({
   'powerline/powerline', -- TODO: Customize, (possibly replace with something in lua) currently shows very little info
   'mileszs/ack.vim', -- TODO: Now using telescope as a trial, remove 'ack' if no longer using it in favour of telescope
   cmp_spec,
+  gitblame_spec,
   lspconfig_spec,
   luasnip_spec,
   mason_spec,
