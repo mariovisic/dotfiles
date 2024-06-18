@@ -83,6 +83,34 @@ local mason_lspconfig_spec = {
   }
 }
 
+--telescope for fuzzy finding files
+local telescope_spec = {
+  'nvim-telescope/telescope.nvim',
+  dependencies = { 'nvim-lua/plenary.nvim' },
+  config = function()
+    local telescope_config = require("telescope.builtin")
+    vim.keymap.set('n', '<C-P>', telescope_config.find_files, {})
+    vim.keymap.set('n', '<C-F>', telescope_config.live_grep, {})
+    vim.keymap.set('n', '<leader>fb', telescope_config.buffers, {})
+    vim.keymap.set('n', '<leader>fh', telescope_config.help_tags, {})
+
+    local actions = require("telescope.actions")
+    require("telescope").setup{
+      defaults = {
+        mappings = {
+          i = {
+            -- I don't use the esc key as it's far away (I use ctrl+c instead).
+            -- So remap ctrl+c inside of telescope to exit insert mode Can
+            -- still quit Telescope by changing split in normal mode
+            ["<C-c>"] = { "<esc>", type = "command" }
+          },
+        },
+      }
+    }
+
+  end,
+}
+
 -- Install lazy.nvim from GitHub.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
@@ -101,13 +129,13 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Install plugins using lazy.nvim.
 require("lazy").setup({
-  'preservim/nerdtree', -- TODO: Lookup newer alternatives --
-  'powerline/powerline', -- TODO: Customize, (possibly replace with something in lua) currently shows very little info --
-  'ctrlpvim/ctrlp.vim', -- TODO: Lookup faster and more feature rich alternatives --
-  'mileszs/ack.vim', -- TODO: Replace with something newer, possibly ctrlp+ack successor can be the same plugin --
+  'preservim/nerdtree', -- TODO: Lookup newer alternatives
+  'powerline/powerline', -- TODO: Customize, (possibly replace with something in lua) currently shows very little info
+  'mileszs/ack.vim', -- TODO: Now using telescope as a trial, remove 'ack' if no longer using it in favour of telescope
   cmp_spec,
   lspconfig_spec,
   luasnip_spec,
   mason_spec,
   mason_lspconfig_spec,
+  telescope_spec
 })
