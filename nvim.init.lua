@@ -111,6 +111,7 @@ local telescope_spec = {
   end,
 }
 
+-- shows the last commit message when hovering a line --
 local gitblame_spec = {
   'f-person/git-blame.nvim',
   opts = {
@@ -142,6 +143,7 @@ require("lazy").setup({
   'preservim/nerdtree', -- TODO: Lookup newer alternatives
   'powerline/powerline', -- TODO: Customize, (possibly replace with something in lua) currently shows very little info
   'mileszs/ack.vim', -- TODO: Now using telescope as a trial, remove 'ack' if no longer using it in favour of telescope
+  'tpope/vim-rails',
   cmp_spec,
   gitblame_spec,
   lspconfig_spec,

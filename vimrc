@@ -44,12 +44,6 @@
   " Indent based on file type
   filetype plugin indent on
 
-  " Default indent settings (2 spaces with no tabs)
-  set tabstop=2
-  set shiftwidth=2
-  set softtabstop=2
-  set expandtab
-
   " Do not wrap lines by default
   set nowrap
 
