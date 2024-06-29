@@ -136,6 +136,22 @@ if not vim.uv.fs_stat(lazypath) then
   })
 end
 
+-- Show indent lines
+local indent_mini_spec = {
+  'nvimdev/indentmini.nvim',
+  config = function()
+    require('indentmini').setup()
+  end,
+}
+
+local tokyo_night_spec = {
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+}
+
+
 vim.opt.rtp:prepend(lazypath)
 
 -- Install plugins using lazy.nvim.
@@ -144,11 +160,19 @@ require("lazy").setup({
   'powerline/powerline', -- TODO: Customize, (possibly replace with something in lua) currently shows very little info
   'mileszs/ack.vim', -- TODO: Now using telescope as a trial, remove 'ack' if no longer using it in favour of telescope
   'tpope/vim-rails',
+  tokyo_night_spec,
   cmp_spec,
   gitblame_spec,
   lspconfig_spec,
   luasnip_spec,
   mason_spec,
   mason_lspconfig_spec,
-  telescope_spec
+  telescope_spec,
+  indent_mini_spec,
 })
+
+-- VimR (Gui) specific config
+if string.find(vim.env.VIM, "VimR") then
+  vim.cmd[[colorscheme tokyonight]]
+  vim.o.termguicolors = true
+end

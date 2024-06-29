@@ -9,7 +9,7 @@
   set guioptions-=T
 
   " Default font
-  set guifont=Monaco:h14.00
+  set guifont=Monaco:h18.00
 
   " Color scheme
   color getafe
