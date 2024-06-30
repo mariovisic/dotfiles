@@ -11,6 +11,7 @@ vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 vim.o.expandtab = true
+vim.o.termguicolors = true
 
 -- Use the system clipboard when yanking/pasting
 vim.api.nvim_set_option("clipboard","unnamed")
@@ -29,6 +30,7 @@ local lspconfig_spec = {
     lspconfig.tsserver.setup({ capabilities = capabilities })
 
     -- Ruby setup
+    lspconfig.ruby_lsp.setup({ capabilities = capabilities })
     lspconfig.rubocop.setup({ capabilities = capabilities })
     lspconfig.sorbet.setup({ capabilities = capabilities })
   end,
@@ -209,8 +211,4 @@ require("lazy").setup({
   indent_mini_spec,
 })
 
--- VimR (Gui) specific config
-if string.find(vim.env.VIM, "VimR") then
-  vim.cmd[[colorscheme tokyonight]]
-  vim.o.termguicolors = true
-end
+vim.cmd[[colorscheme tokyonight]]
