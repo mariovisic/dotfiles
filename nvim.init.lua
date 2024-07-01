@@ -16,113 +16,6 @@ vim.o.termguicolors = true
 -- Use the system clipboard when yanking/pasting
 vim.api.nvim_set_option("clipboard","unnamed")
 
--- nvim-lspconfig configures neovim to talk to language servers.
-local lspconfig_spec = {
-  "neovim/nvim-lspconfig",
-  dependencies = { "hrsh7th/cmp-nvim-lsp", "williamboman/mason-lspconfig.nvim" },
-  config = function()
-    local lspconfig = require("lspconfig")
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-    -- TypeScript setup
-    lspconfig.eslint.setup({ capabilities = capabilities })
-    lspconfig.relay_lsp.setup({ capabilities = capabilities })
-    lspconfig.tsserver.setup({ capabilities = capabilities })
-
-    -- Ruby setup
-    lspconfig.ruby_lsp.setup({ capabilities = capabilities })
-    lspconfig.rubocop.setup({ capabilities = capabilities })
-    lspconfig.sorbet.setup({ capabilities = capabilities })
-  end,
-}
-
--- nvim-cmp provides completion from languages servers and snippets.
-local cmp_spec = {
-  "hrsh7th/nvim-cmp",
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "saadparwaiz1/cmp_luasnip",
-    "L3MON4D3/LuaSnip"
-  },
-  config = function()
-    local cmp = require("cmp")
-    local luasnip = require("luasnip")
-
-    cmp.setup({
-      sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' }
-      }),
-      mapping = cmp.mapping.preset.insert({
-
-       ['<CR>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                if luasnip.expandable() then
-                    luasnip.expand()
-                else
-                    cmp.confirm({
-                        select = true,
-                    })
-                end
-            else
-                fallback()
-            end
-        end),
-
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.locally_jumpable(1) then
-            luasnip.jump(1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.locally_jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-      }),
-
-      snippet = {
-        expand = function(args)
-          require('luasnip').lsp_expand(args.body)
-        end,
-      },
-    })
-  end
-}
-
--- luasnip provides helpful snippets.
-local luasnip_spec = {
-  "L3MON4D3/LuaSnip",
-  build = "make install_jsregexp"
-}
-
--- mason installs language servers for us.
-local mason_spec = {
-  "williamboman/mason.nvim",
-  opts = {}
-}
-
--- 
-
--- mason-lspconfig uses mason to install language servers and configures neovim
--- to use them.
-local mason_lspconfig_spec = {
-  "williamboman/mason-lspconfig.nvim",
-  dependencies = { "williamboman/mason.nvim" },
-  opts = {
-    automatic_installation = true
-  }
-}
-
 --telescope for fuzzy finding files
 local telescope_spec = {
   'nvim-telescope/telescope.nvim',
@@ -201,14 +94,12 @@ require("lazy").setup({
   'mileszs/ack.vim', -- TODO: Now using telescope as a trial, remove 'ack' if no longer using it in favour of telescope
   'tpope/vim-rails',
   tokyo_night_spec,
-  cmp_spec,
   gitblame_spec,
-  lspconfig_spec,
-  luasnip_spec,
-  mason_spec,
-  mason_lspconfig_spec,
   telescope_spec,
   indent_mini_spec,
 })
+
+-- Use tab for autocomplete!
+vim.api.nvim_set_keymap("i", "<Tab>", "<C-n>", { noremap = true, silent = true })
 
 vim.cmd[[colorscheme tokyonight]]
