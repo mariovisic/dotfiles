@@ -101,5 +101,6 @@ require("lazy").setup({
 
 -- Use tab for autocomplete!
 vim.api.nvim_set_keymap("i", "<Tab>", "<C-n>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<S-Tab>", "<C-p>", { noremap = true, silent = true })
 
 vim.cmd[[colorscheme tokyonight]]
