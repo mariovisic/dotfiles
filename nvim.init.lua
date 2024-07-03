@@ -120,6 +120,6 @@ if vim.g.neovide then
   -- Enable 24-bit color :)
   vim.o.termguicolors = true
   vim.cmd[[colorscheme tokyonight]]
-  -- Make the neovide animations very quick so they're less jarring
-  vim.g.neovide_position_animation_length = 0.02
+  -- Disable the neovide cursor animations as they're distrating
+  vim.g.neovide_cursor_animation_length = 0
 end
