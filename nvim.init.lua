@@ -6,17 +6,23 @@ let &packpath = &runtimepath
 source ~/.vimrc
 ]])
 
--- Use 2 spaces instead of tabs for indentation
+-- Syntax settings (2 space soft-tabs)
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 vim.o.expandtab = true
+
+-- Enable 24-bit color :)
 vim.o.termguicolors = true
 
 -- Use the system clipboard when yanking/pasting
 vim.api.nvim_set_option("clipboard","unnamed")
 
---telescope for fuzzy finding files
+-- Use tab for autocomplete!
+vim.api.nvim_set_keymap("i", "<Tab>", "<C-n>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<S-Tab>", "<C-p>", { noremap = true, silent = true })
+
+-- Fuzzy finding files (and searching contents of files)
 local telescope_spec = {
   'nvim-telescope/telescope.nvim',
   dependencies = { 'nvim-lua/plenary.nvim' },
@@ -40,34 +46,19 @@ local telescope_spec = {
         },
       }
     }
-
-  end,
+  end
 }
 
--- shows the last commit message when hovering a line --
+-- shows the last commit message when hovering a line
 local gitblame_spec = {
   'f-person/git-blame.nvim',
   opts = {
     -- git-blame  does not let you change the color of the message, but you can
-    -- changer its gropu, Float is not significant, other than the colour is a
-    -- nice light brown :)
+    -- changer its group, Float is not significant, other than the colour is a
+    -- nice oranger in tokyo_night :)
     highlight_group = 'Float'
   }
 }
-
--- Install lazy.nvim from GitHub.
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.uv.fs_stat(lazypath) then
-  vim.notify("Installing lazy.nvim...")
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
 
 -- Show indent lines
 local indent_mini_spec = {
@@ -77,6 +68,7 @@ local indent_mini_spec = {
   end,
 }
 
+-- Color theme
 local tokyo_night_spec = {
   "folke/tokyonight.nvim",
   lazy = false,
@@ -84,23 +76,46 @@ local tokyo_night_spec = {
   opts = {},
 }
 
+-- Comment out lines with \c + vector
+local mini_comment_spec = {
+  'echasnovski/mini.comment',
+  version = false,
+  config = function()
+    require('mini.comment').setup{
+      mappings = {
+        comment = '<leader>c',
+        comment_visual = '<leader>c',
+        comment_line = '<leader>cc',
+      }
+    }
+  end,
+}
 
+-- Install lazy.nvim from GitHub. (for installing plugins)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.uv.fs_stat(lazypath) then
+  vim.notify("Installing lazy.nvim...")
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
 vim.opt.rtp:prepend(lazypath)
 
 -- Install plugins using lazy.nvim.
 require("lazy").setup({
   'preservim/nerdtree', -- TODO: Lookup newer alternatives
   'powerline/powerline', -- TODO: Customize, (possibly replace with something in lua) currently shows very little info
-  'mileszs/ack.vim', -- TODO: Now using telescope as a trial, remove 'ack' if no longer using it in favour of telescope
   'tpope/vim-rails',
   tokyo_night_spec,
   gitblame_spec,
   telescope_spec,
   indent_mini_spec,
+  mini_comment_spec,
 })
-
--- Use tab for autocomplete!
-vim.api.nvim_set_keymap("i", "<Tab>", "<C-n>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("i", "<S-Tab>", "<C-p>", { noremap = true, silent = true })
 
 vim.cmd[[colorscheme tokyonight]]
