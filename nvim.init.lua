@@ -12,8 +12,6 @@ vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 vim.o.expandtab = true
 
--- Enable 24-bit color :)
-vim.o.termguicolors = true
 
 -- Use the system clipboard when yanking/pasting
 vim.api.nvim_set_option("clipboard","unnamed")
@@ -118,4 +116,10 @@ require("lazy").setup({
   mini_comment_spec,
 })
 
-vim.cmd[[colorscheme tokyonight]]
+if vim.g.neovide then
+  -- Enable 24-bit color :)
+  vim.o.termguicolors = true
+  vim.cmd[[colorscheme tokyonight]]
+  -- Make the neovide animations very quick so they're less jarring
+  vim.g.neovide_position_animation_length = 0.02
+end
