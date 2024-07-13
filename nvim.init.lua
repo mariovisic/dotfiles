@@ -74,6 +74,13 @@ local tokyo_night_spec = {
   opts = {},
 }
 
+local git_signs_spec = {
+  'lewis6991/gitsigns.nvim',
+  config = function()
+    require('gitsigns').setup()
+  end,
+}
+
 -- Comment out lines with \c + vector
 local mini_comment_spec = {
   'echasnovski/mini.comment',
@@ -109,11 +116,12 @@ require("lazy").setup({
   'preservim/nerdtree', -- TODO: Lookup newer alternatives
   'powerline/powerline', -- TODO: Customize, (possibly replace with something in lua) currently shows very little info
   'tpope/vim-rails',
-  tokyo_night_spec,
+  git_signs_spec,
   gitblame_spec,
-  telescope_spec,
   indent_mini_spec,
   mini_comment_spec,
+  telescope_spec,
+  tokyo_night_spec,
 })
 
 if vim.g.neovide then
