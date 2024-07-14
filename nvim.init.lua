@@ -62,7 +62,10 @@ local gitblame_spec = {
 local indent_mini_spec = {
   'nvimdev/indentmini.nvim',
   config = function()
-    require('indentmini').setup()
+    -- Only show indentation guide in neovide GUI, as the colours are a bit much for the terminal
+    if vim.g.neovide then
+      require('indentmini').setup()
+    end
   end,
 }
 
