@@ -95,9 +95,3 @@
 
   let g:nerdtree_tabs_open_on_gui_startup=0
 
-"""""""""""""""""
-" Vim Powerline "
-""""""""""""""""" 
-
-  " This allows the powerline to always be shown (not just when a split is open).
-  set laststatus=2
