@@ -12,7 +12,6 @@ vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 vim.o.expandtab = true
 
-
 -- Use the system clipboard when yanking/pasting
 vim.api.nvim_set_option("clipboard","unnamed")
 
@@ -58,17 +57,6 @@ local gitblame_spec = {
   }
 }
 
--- Show indent lines
-local indent_mini_spec = {
-  'nvimdev/indentmini.nvim',
-  config = function()
-    -- Only show indentation guide in neovide GUI, as the colours are a bit much for the terminal
-    if vim.g.neovide then
-      require('indentmini').setup()
-    end
-  end,
-}
-
 -- Color theme
 local tokyo_night_spec = {
   "folke/tokyonight.nvim",
@@ -85,25 +73,14 @@ local git_signs_spec = {
   end,
 }
 
--- Show a status line down the bottom
-local mini_line_spec = {
+-- Mini: A collection of small plugins
+local mini_spec = {
   'echasnovski/mini.nvim',
   config = function()
+    -- Show a status line down the bottom
     require('mini.statusline').setup()
-  end,
-}
 
--- Highlight TODO and FIXME in comments
-local todo_comments_spec = {
-  'folke/todo-comments.nvim',
-  dependencies = { 'nvim-lua/plenary.nvim' },
-}
-
--- Comment out lines with \c + vector
-local mini_comment_spec = {
-  'echasnovski/mini.comment',
-  version = false,
-  config = function()
+    -- Comment out lines with \c + vector
     require('mini.comment').setup{
       mappings = {
         comment = '<leader>c',
@@ -112,6 +89,12 @@ local mini_comment_spec = {
       }
     }
   end,
+}
+
+-- Highlight TODO and FIXME in comments
+local todo_comments_spec = {
+  'folke/todo-comments.nvim',
+  dependencies = { 'nvim-lua/plenary.nvim' },
 }
 
 -- Install lazy.nvim from GitHub. (for installing plugins)
@@ -135,9 +118,7 @@ require("lazy").setup({
   'tpope/vim-rails',
   git_signs_spec,
   gitblame_spec,
-  indent_mini_spec,
-  mini_line_spec,
-  mini_comment_spec,
+  mini_spec,
   telescope_spec,
   todo_comments_spec,
   tokyo_night_spec,
