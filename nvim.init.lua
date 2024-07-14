@@ -119,6 +119,7 @@ local todo_comments_spec = {
   dependencies = { 'nvim-lua/plenary.nvim' },
 }
 
+-- Show a file tree explorer
 local nvim_tree_spec = {
   "nvim-tree/nvim-tree.lua",
   version = "*",
