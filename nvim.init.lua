@@ -74,11 +74,26 @@ local tokyo_night_spec = {
   opts = {},
 }
 
+-- Shows git line status in sidebar
 local git_signs_spec = {
   'lewis6991/gitsigns.nvim',
   config = function()
     require('gitsigns').setup()
   end,
+}
+
+-- Show a status line down the bottom
+local mini_line_spec = {
+  'echasnovski/mini.nvim',
+  config = function()
+    require('mini.statusline').setup()
+  end,
+}
+
+-- Highlight TODO and FIXME in comments
+local todo_comments_spec = {
+  'folke/todo-comments.nvim',
+  dependencies = { 'nvim-lua/plenary.nvim' },
 }
 
 -- Comment out lines with \c + vector
@@ -114,13 +129,14 @@ vim.opt.rtp:prepend(lazypath)
 -- Install plugins using lazy.nvim.
 require("lazy").setup({
   'preservim/nerdtree', -- TODO: Lookup newer alternatives
-  'powerline/powerline', -- TODO: Customize, (possibly replace with something in lua) currently shows very little info
   'tpope/vim-rails',
   git_signs_spec,
   gitblame_spec,
   indent_mini_spec,
+  mini_line_spec,
   mini_comment_spec,
   telescope_spec,
+  todo_comments_spec,
   tokyo_night_spec,
 })
 
