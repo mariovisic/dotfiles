@@ -19,6 +19,15 @@ vim.api.nvim_set_option("clipboard","unnamed")
 vim.api.nvim_set_keymap("i", "<Tab>", "<C-n>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("i", "<S-Tab>", "<C-p>", { noremap = true, silent = true })
 
+-- Disable netrw as it interferes with nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- <leader>n opens nvim-tree
+vim.keymap.set('n', '<leader>n', ':NvimTreeToggle<CR>', {
+  noremap = true
+})
+
 -- Fuzzy finding files (and searching contents of files)
 local telescope_spec = {
   'nvim-telescope/telescope.nvim',
@@ -110,6 +119,18 @@ local todo_comments_spec = {
   dependencies = { 'nvim-lua/plenary.nvim' },
 }
 
+local nvim_tree_spec = {
+  "nvim-tree/nvim-tree.lua",
+  version = "*",
+  lazy = false,
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
+  config = function()
+    require("nvim-tree").setup {}
+  end,
+}
+
 -- Install lazy.nvim from GitHub. (for installing plugins)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
@@ -127,11 +148,11 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Install plugins using lazy.nvim.
 require("lazy").setup({
-  'preservim/nerdtree', -- TODO: Lookup newer alternatives
   'tpope/vim-rails',
   git_signs_spec,
   gitblame_spec,
   mini_spec,
+  nvim_tree_spec,
   telescope_spec,
   todo_comments_spec,
   tokyo_night_spec,
