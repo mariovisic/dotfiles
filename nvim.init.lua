@@ -149,6 +149,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Install plugins using lazy.nvim.
 require("lazy").setup({
+  'neovim/nvim-lspconfig',
+  'VonHeikemen/lsp-zero.nvim',
   'tpope/vim-rails',
   git_signs_spec,
   gitblame_spec,
@@ -184,3 +186,21 @@ end
 if vim.fn.argc(-1) == 0 then
   vim.cmd("NvimTreeOpen")
 end
+
+-- Setup language server support with lsp-zero
+local lsp_zero = require('lsp-zero')
+
+lsp_zero.on_attach(function(client, bufnr)
+  lsp_zero.default_keymaps({buffer = bufnr})
+end)
+
+-- Setup specific language servers (manually installed) :)
+require('lspconfig').tsserver.setup({})
+require('lspconfig').sorbet.setup({})
+
+-- Setup tab autocomplete for lsp
+lsp_zero.omnifunc.setup({
+  tabcomplete = true,
+  use_fallback = true,
+  select_behavior = 'insert',
+})
