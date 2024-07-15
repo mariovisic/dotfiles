@@ -179,3 +179,8 @@ if vim.g.neovide then
   vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
   vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 end
+
+-- Open file tree if no file specified
+if vim.fn.argc(-1) == 0 then
+  vim.cmd("NvimTreeOpen")
+end
