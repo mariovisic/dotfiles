@@ -17,12 +17,12 @@ source $(brew --prefix)/opt/gitstatus/gitstatus.prompt.zsh
 eval "$(mise activate zsh --shims)"
 
 # Ferocia specific android setup
-if [ -z ${ANDROID_SDK_ROOT+x} ]; then
-  export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-  export PATH=$ANDROID_SDK_ROOT/emulator:$PATH
-  export PATH=$ANDROID_SDK_ROOT/tools:$PATH
-  export PATH=$ANDROID_SDK_ROOT/tools/bin:$PATH
-  export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
-  export PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$PATH
+if [ -z ${ANDROID_HOME+x} ]; then
+  export ANDROID_HOME=$HOME/Library/Android/sdk
+  export PATH=$ANDROID_HOME/emulator:$PATH
+  export PATH=$ANDROID_HOME/tools:$PATH
+  export PATH=$ANDROID_HOME/tools/bin:$PATH
+  export PATH=$ANDROID_HOME/platform-tools:$PATH
+  export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
 fi
 
