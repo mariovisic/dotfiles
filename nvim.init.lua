@@ -36,6 +36,7 @@ local telescope_spec = {
     local telescope_config = require("telescope.builtin")
     vim.keymap.set('n', '<C-P>', telescope_config.find_files, {})
     vim.keymap.set('n', '<C-F>', telescope_config.live_grep, {})
+    vim.keymap.set('n', '<leader>t', telescope_config.resume, {})
     vim.keymap.set('n', '<leader>fb', telescope_config.buffers, {})
     vim.keymap.set('n', '<leader>fh', telescope_config.help_tags, {})
 
