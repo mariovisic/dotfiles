@@ -36,6 +36,8 @@ local telescope_spec = {
     local telescope_config = require("telescope.builtin")
     vim.keymap.set('n', '<C-P>', telescope_config.find_files, {})
     vim.keymap.set('n', '<C-F>', telescope_config.live_grep, {})
+    -- FIXME: \t resumes telescope but enters insert mode
+    -- it would be more helpful to have it enter normal mode instead
     vim.keymap.set('n', '<leader>t', telescope_config.resume, {})
     vim.keymap.set('n', '<leader>fb', telescope_config.buffers, {})
     vim.keymap.set('n', '<leader>fh', telescope_config.help_tags, {})
@@ -44,12 +46,11 @@ local telescope_spec = {
     require("telescope").setup{
       defaults = {
         mappings = {
-          i = {
-            -- I don't use the esc key as it's far away (I use ctrl+c instead).
-            -- So remap ctrl+c inside of telescope to exit insert mode Can
-            -- still quit Telescope by changing split in normal mode
-            ["<C-c>"] = { "<esc>", type = "command" }
-          },
+          -- I don't use the esc key as it's far away (I use ctrl+c instead).
+          -- So remap ctrl+c inside of telescope to exit insert mode. In
+          -- normal mode ctrl+c closes telescope
+          i = { ["<C-c>"] = { "<esc>", type = "command" } },
+          n = { ["<C-c>"] = "close", },
         },
       }
     }
