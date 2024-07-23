@@ -47,7 +47,7 @@ local telescope_spec = {
     vim.keymap.set('n', '<leader>fb', telescope_config.buffers, {})
     vim.keymap.set('n', '<leader>fh', telescope_config.help_tags, {})
 
-    vim.keymap.set({'n', 'i'}, '<leader>t', function()
+    vim.keymap.set('n', '<leader>t', function()
       local prompt_bufnr = vim.api.nvim_get_current_buf()
       local current_picker = action_state.get_current_picker(prompt_bufnr)
       local cached_pickers = state.get_global_key('cached_pickers')
@@ -70,7 +70,6 @@ local telescope_spec = {
       end
     end)
 
-    local actions = require("telescope.actions")
     require("telescope").setup{
       defaults = {
         mappings = {
