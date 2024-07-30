@@ -223,6 +223,11 @@ local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
   lsp_zero.default_keymaps({buffer = bufnr})
+
+  -- format files with LSP using <leader>f
+  vim.keymap.set({'n', 'x'}, '<leader>f', function()
+    vim.lsp.buf.format({async = false, timeout_ms = 10000})
+  end, opts)
 end)
 
 -- Setup specific language servers (manually installed) :)
@@ -232,6 +237,7 @@ require('lspconfig').tsserver.setup({})
 
 -- Ruby
 require('lspconfig').sorbet.setup({})
+require('lspconfig').standardrb.setup({force_setup = true})
 
 -- Lua
 require('lspconfig').lua_ls.setup({
