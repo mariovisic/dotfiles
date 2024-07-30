@@ -224,8 +224,8 @@ local lsp_zero = require('lsp-zero')
 lsp_zero.on_attach(function(client, bufnr)
   lsp_zero.default_keymaps({buffer = bufnr})
 
-  -- format files with LSP using <leader>f
-  vim.keymap.set({'n', 'x'}, '<leader>f', function()
+  -- format files with LSP using gq
+  vim.keymap.set({'n', 'x'}, 'gq', function()
     vim.lsp.buf.format({async = false, timeout_ms = 10000})
   end, opts)
 end)
