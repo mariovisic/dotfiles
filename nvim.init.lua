@@ -163,6 +163,53 @@ local nvim_tree_spec = {
   end,
 }
 
+-- Show notications and progress messages (useful for format on save and LSP messages)
+local fidget_spec = {
+  "j-hui/fidget.nvim",
+  opts = {
+    notification = { override_vim_notify = true }, -- Messages going to vim.notify() will be displayed by fidget
+  },
+}
+
+-- Allow non LSPs to use the LSP interface (eg: add support for language formatters)
+local none_ls_spec = {
+  "nvimtools/none-ls.nvim",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  config = function()
+    local null_ls = require("null-ls")
+    local formatting = null_ls.builtins.formatting
+
+    null_ls.setup({
+      sources = {
+        formatting.prettierd.with({ disabled_filetypes = { "yaml" } }), -- format JS with prettier
+      },
+    })
+  end,
+}
+
+
+-- Format files on save START
+local filter_formatters = function(client)
+  if client.name == 'null-ls' then
+    return true
+  elseif client.name == 'syntax_tree' then
+    vim.notify('Formatting with syntax_tree')
+    return true
+  else
+    return false
+  end
+end
+
+-- Install the hook that does the formatting.
+local augroup = vim.api.nvim_create_augroup('LspFormatting', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePre', {
+  group = augroup,
+  callback = function()
+    vim.lsp.buf.format({ filter = filter_formatters })
+  end,
+})
+-- Format files on save END
+
 -- Install lazy.nvim from GitHub. (for installing plugins)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
@@ -181,11 +228,13 @@ vim.opt.rtp:prepend(lazypath)
 -- Install plugins using lazy.nvim.
 require("lazy").setup({
   'neovim/nvim-lspconfig',
-  'VonHeikemen/lsp-zero.nvim',
   'tpope/vim-rails',
+  'VonHeikemen/lsp-zero.nvim',
+  fidget_spec,
   git_signs_spec,
   gitblame_spec,
   mini_spec,
+  none_ls_spec,
   nvim_tree_spec,
   telescope_spec,
   todo_comments_spec,
@@ -237,7 +286,7 @@ require('lspconfig').tsserver.setup({})
 
 -- Ruby
 require('lspconfig').sorbet.setup({})
-require('lspconfig').standardrb.setup({force_setup = true})
+require('lspconfig').syntax_tree.setup({})
 
 -- Lua
 require('lspconfig').lua_ls.setup({
