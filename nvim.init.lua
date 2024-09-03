@@ -13,7 +13,7 @@ vim.o.softtabstop = 2
 vim.o.expandtab = true
 
 -- Use the system clipboard when yanking/pasting
-vim.api.nvim_set_option("clipboard","unnamed")
+vim.api.nvim_set_option("clipboard", "unnamed")
 
 -- Use tab for autocomplete!
 vim.api.nvim_set_keymap("i", "<Tab>", "<C-n>", { noremap = true, silent = true })
@@ -25,32 +25,32 @@ vim.g.loaded_netrwPlugin = 1
 
 -- I use ctrl+c instead of escape, but ctrl+c doesn't trigger some events which
 -- are needed for LSP, let's map ctrl+c to match escape to get this behaviour
-vim.keymap.set({'i', 'n', 'v'}, '<C-C>', '<esc>')
+vim.keymap.set({ "i", "n", "v" }, "<C-C>", "<esc>")
 
 -- <leader>n opens nvim-tree
-vim.keymap.set('n', '<leader>n', ':NvimTreeToggle<CR>', {
-  noremap = true
+vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", {
+  noremap = true,
 })
 
 -- Fuzzy finding files (and searching contents of files)
 local telescope_spec = {
-  'nvim-telescope/telescope.nvim',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  "nvim-telescope/telescope.nvim",
+  dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
-    local telescope_config = require('telescope.builtin')
-    local action_state = require('telescope.actions.state')
-    local state = require('telescope.state')
-    local actions = require('telescope.actions')
+    local telescope_config = require("telescope.builtin")
+    local action_state = require("telescope.actions.state")
+    local state = require("telescope.state")
+    local actions = require("telescope.actions")
 
-    vim.keymap.set('n', '<C-P>', telescope_config.find_files, {})
-    vim.keymap.set('n', '<C-F>', telescope_config.live_grep, {})
-    vim.keymap.set('n', '<leader>fb', telescope_config.buffers, {})
-    vim.keymap.set('n', '<leader>fh', telescope_config.help_tags, {})
+    vim.keymap.set("n", "<C-P>", telescope_config.find_files, {})
+    vim.keymap.set("n", "<C-F>", telescope_config.live_grep, {})
+    vim.keymap.set("n", "<leader>fb", telescope_config.buffers, {})
+    vim.keymap.set("n", "<leader>fh", telescope_config.help_tags, {})
 
-    vim.keymap.set('n', '<leader>t', function()
+    vim.keymap.set("n", "<leader>t", function()
       local prompt_bufnr = vim.api.nvim_get_current_buf()
       local current_picker = action_state.get_current_picker(prompt_bufnr)
-      local cached_pickers = state.get_global_key('cached_pickers')
+      local cached_pickers = state.get_global_key("cached_pickers")
 
       -- Check if there is an open telescope window
       if current_picker then
@@ -65,34 +65,34 @@ local telescope_spec = {
           -- if it has then resume the last window (in normal mode, it wants to open in insert by default)
           telescope_config.resume()
           local key = vim.api.nvim_replace_termcodes("<C-c>", true, false, true)
-          vim.api.nvim_feedkeys(key, 'n', false)
+          vim.api.nvim_feedkeys(key, "n", false)
         end
       end
     end)
 
-    require("telescope").setup{
+    require("telescope").setup({
       defaults = {
         mappings = {
           -- I don't use the esc key as it's far away (I use ctrl+c instead).
           -- So remap ctrl+c inside of telescope to exit insert mode. In
           -- normal mode ctrl+c closes telescope
           i = { ["<C-c>"] = { "<esc>", type = "command" } },
-          n = { ["<C-c>"] = "close", },
+          n = { ["<C-c>"] = "close" },
         },
-      }
-    }
-  end
+      },
+    })
+  end,
 }
 
 -- shows the last commit message when hovering a line
 local gitblame_spec = {
-  'f-person/git-blame.nvim',
+  "f-person/git-blame.nvim",
   opts = {
     -- git-blame  does not let you change the color of the message, but you can
     -- changer its group, Float is not significant, other than the colour is a
     -- nice oranger in tokyo_night :)
-    highlight_group = 'Float'
-  }
+    highlight_group = "Float",
+  },
 }
 
 -- Color theme
@@ -105,47 +105,47 @@ local tokyo_night_spec = {
 
 -- Shows git line status in sidebar
 local git_signs_spec = {
-  'lewis6991/gitsigns.nvim',
+  "lewis6991/gitsigns.nvim",
   config = function()
-    require('gitsigns').setup()
+    require("gitsigns").setup()
   end,
 }
 
 -- Mini: A collection of small plugins
 local mini_spec = {
-  'echasnovski/mini.nvim',
+  "echasnovski/mini.nvim",
   config = function()
     -- Show a status line down the bottom
-    require('mini.statusline').setup()
+    require("mini.statusline").setup()
 
     -- Show indentation scope for current line
-    require('mini.indentscope').setup({
+    require("mini.indentscope").setup({
       draw = {
         -- Use a little delay with no animations to make it seem seemless
         delay = 30,
-        animation = require('mini.indentscope').gen_animation.none(),
+        animation = require("mini.indentscope").gen_animation.none(),
       },
       options = {
         indent_at_cursor = false,
       },
-      symbol = '|',
+      symbol = "|",
     })
 
     -- Comment out lines with \c + vector
-    require('mini.comment').setup({
+    require("mini.comment").setup({
       mappings = {
-        comment = '<leader>c',
-        comment_visual = '<leader>c',
-        comment_line = '<leader>cc',
-      }
+        comment = "<leader>c",
+        comment_visual = "<leader>c",
+        comment_line = "<leader>cc",
+      },
     })
   end,
 }
 
 -- Highlight TODO and FIXME in comments
 local todo_comments_spec = {
-  'folke/todo-comments.nvim',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  "folke/todo-comments.nvim",
+  dependencies = { "nvim-lua/plenary.nvim" },
 }
 
 -- Show a file tree explorer
@@ -157,9 +157,9 @@ local nvim_tree_spec = {
     "nvim-tree/nvim-web-devicons",
   },
   config = function()
-    require("nvim-tree").setup {
+    require("nvim-tree").setup({
       sync_root_with_cwd = true,
-    }
+    })
   end,
 }
 
@@ -182,18 +182,18 @@ local none_ls_spec = {
     null_ls.setup({
       sources = {
         formatting.prettierd.with({ disabled_filetypes = { "yaml" } }), -- format JS with prettier
+        formatting.stylua, -- Format lua with stylua
       },
     })
   end,
 }
 
-
 -- Format files on save START
 local filter_formatters = function(client)
-  if client.name == 'null-ls' then
+  if client.name == "null-ls" then
     return true
-  elseif client.name == 'syntax_tree' then
-    vim.notify('Formatting with syntax_tree')
+  elseif client.name == "syntax_tree" then
+    vim.notify("Formatting with syntax_tree")
     return true
   else
     return false
@@ -201,8 +201,8 @@ local filter_formatters = function(client)
 end
 
 -- Install the hook that does the formatting.
-local augroup = vim.api.nvim_create_augroup('LspFormatting', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePre', {
+local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePre", {
   group = augroup,
   callback = function()
     vim.lsp.buf.format({ filter = filter_formatters })
@@ -227,9 +227,9 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Install plugins using lazy.nvim.
 require("lazy").setup({
-  'neovim/nvim-lspconfig',
-  'tpope/vim-rails',
-  'VonHeikemen/lsp-zero.nvim',
+  "neovim/nvim-lspconfig",
+  "tpope/vim-rails",
+  "VonHeikemen/lsp-zero.nvim",
   fidget_spec,
   git_signs_spec,
   gitblame_spec,
@@ -244,22 +244,22 @@ require("lazy").setup({
 if vim.g.neovide then
   -- Enable 24-bit color :)
   vim.o.termguicolors = true
-  vim.cmd[[colorscheme tokyonight]]
+  vim.cmd([[colorscheme tokyonight]])
   -- Disable the neovide cursor animations as they're distrating
   vim.g.neovide_cursor_animation_length = 0
 
   -- Allow clipboard copy paste in neovide
-  vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
-  vim.keymap.set('v', '<D-c>', '"+y') -- Copy
-  vim.keymap.set('n', '<D-v>', '"+P') -- Paste normal mode
-  vim.keymap.set('v', '<D-v>', '"+P') -- Paste visual mode
-  vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
-  vim.keymap.set('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
+  vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
+  vim.keymap.set("v", "<D-c>", '"+y') -- Copy
+  vim.keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
+  vim.keymap.set("v", "<D-v>", '"+P') -- Paste visual mode
+  vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
+  vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
 
-  vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true})
-  vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true})
-  vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
-  vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+  vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("!", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("t", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
 end
 
 -- Open file tree if no file specified
@@ -268,50 +268,44 @@ if vim.fn.argc(-1) == 0 then
 end
 
 -- Setup language server support with lsp-zero
-local lsp_zero = require('lsp-zero')
+local lsp_zero = require("lsp-zero")
 
 lsp_zero.on_attach(function(client, bufnr)
-  lsp_zero.default_keymaps({buffer = bufnr})
+  lsp_zero.default_keymaps({ buffer = bufnr })
 
   -- format files with LSP using gq
-  vim.keymap.set({'n', 'x'}, 'gq', function()
-    vim.lsp.buf.format({async = false, timeout_ms = 10000})
+  vim.keymap.set({ "n", "x" }, "gq", function()
+    vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
   end, opts)
 end)
 
 -- Setup specific language servers (manually installed) :)
 
 -- Typescript
-require('lspconfig').tsserver.setup({})
+require("lspconfig").tsserver.setup({})
 
 -- Ruby
-require('lspconfig').sorbet.setup({})
-require('lspconfig').syntax_tree.setup({})
+require("lspconfig").sorbet.setup({})
+require("lspconfig").syntax_tree.setup({})
 
 -- Lua
-require('lspconfig').lua_ls.setup({
+require("lspconfig").lua_ls.setup({
   settings = {
-    Lua = {}
+    Lua = {},
   },
   on_init = function(client)
     local uv = vim.uv or vim.loop
     local path = client.workspace_folders[1].name
 
     -- Don't do anything if there is a project local config
-    if uv.fs_stat(path .. '/.luarc.json')
-      or uv.fs_stat(path .. '/.luarc.jsonc')
-    then
+    if uv.fs_stat(path .. "/.luarc.json") or uv.fs_stat(path .. "/.luarc.jsonc") then
       return
     end
 
     -- Apply neovim specific settings
     local lua_opts = lsp_zero.nvim_lua_ls()
 
-    client.config.settings.Lua = vim.tbl_deep_extend(
-      'force',
-      client.config.settings.Lua,
-      lua_opts.settings.Lua
-    )
+    client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, lua_opts.settings.Lua)
   end,
 })
 
@@ -319,5 +313,5 @@ require('lspconfig').lua_ls.setup({
 lsp_zero.omnifunc.setup({
   tabcomplete = true,
   use_fallback = true,
-  select_behavior = 'insert',
+  select_behavior = "insert",
 })
