@@ -22,7 +22,7 @@ def link_file(file, new_location = nil)
   home = `echo $HOME`.strip
   new_location ||= "#{file}"
 
-  if File.exists?("#{home}/.#{new_location}")
+  if File.exist?("#{home}/.#{new_location}")
     `rm "#{home}/.#{new_location}"`
   end
 
