@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local mux = wezterm.mux
 local act = wezterm.action
 
-local config = {}
+local config = wezterm.config_builder()
 
 config.keys = {
   -- Clear the scrollback and viewport, then send CTRL-L to redraw prompt
