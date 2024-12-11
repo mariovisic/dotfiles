@@ -7,6 +7,7 @@
   branch = auto
 [push]
   default = current
+  autosetupremote = true
 [core]
   excludesfile = ~/.gitignore
 [alias]
