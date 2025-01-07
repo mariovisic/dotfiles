@@ -10,5 +10,10 @@ return {
     require("nvim-tree").setup({
       sync_root_with_cwd = true,
     })
+
+    -- On boot: open the file tree if there is no file specified
+    if vim.fn.argc(-1) == 0 then
+      vim.cmd("NvimTreeOpen")
+    end
   end,
 }
