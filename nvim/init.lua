@@ -288,6 +288,9 @@ require("lspconfig").tsserver.setup({})
 require("lspconfig").sorbet.setup({})
 require("lspconfig").syntax_tree.setup({})
 
+-- Swift
+require("lspconfig").sourcekit.setup({})
+
 -- Lua
 require("lspconfig").lua_ls.setup({
   settings = {
