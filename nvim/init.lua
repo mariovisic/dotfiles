@@ -6,31 +6,11 @@ let &packpath = &runtimepath
 source ~/.vimrc
 ]])
 
--- Syntax settings (2 space soft-tabs)
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
-vim.o.softtabstop = 2
-vim.o.expandtab = true
+-- Set Neovim options before loading plugins.
+require("config.options")
 
--- Use the system clipboard when yanking/pasting
-vim.api.nvim_set_option("clipboard", "unnamed")
-
--- Use tab for autocomplete!
-vim.api.nvim_set_keymap("i", "<Tab>", "<C-n>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("i", "<S-Tab>", "<C-p>", { noremap = true, silent = true })
-
--- Disable netrw as it interferes with nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
--- I use ctrl+c instead of escape, but ctrl+c doesn't trigger some events which
--- are needed for LSP, let's map ctrl+c to match escape to get this behaviour
-vim.keymap.set({ "i", "n", "v" }, "<C-C>", "<esc>")
-
--- <leader>n opens nvim-tree
-vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", {
-  noremap = true,
-})
+-- Setup Global key mappings
+require("config.key_mappings")
 
 -- Fuzzy finding files (and searching contents of files)
 local telescope_spec = {
@@ -241,27 +221,6 @@ require("lazy").setup({
   tokyo_night_spec,
 })
 
-if vim.g.neovide then
-  -- Enable 24-bit color :)
-  vim.o.termguicolors = true
-  vim.cmd([[colorscheme tokyonight]])
-  -- Disable the neovide cursor animations as they're distrating
-  vim.g.neovide_cursor_animation_length = 0
-
-  -- Allow clipboard copy paste in neovide
-  vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
-  vim.keymap.set("v", "<D-c>", '"+y') -- Copy
-  vim.keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
-  vim.keymap.set("v", "<D-v>", '"+P') -- Paste visual mode
-  vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
-  vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
-
-  vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
-  vim.api.nvim_set_keymap("!", "<D-v>", "<C-R>+", { noremap = true, silent = true })
-  vim.api.nvim_set_keymap("t", "<D-v>", "<C-R>+", { noremap = true, silent = true })
-  vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
-end
-
 -- Open file tree if no file specified
 if vim.fn.argc(-1) == 0 then
   vim.cmd("NvimTreeOpen")
@@ -318,3 +277,6 @@ lsp_zero.omnifunc.setup({
   use_fallback = true,
   select_behavior = "insert",
 })
+
+-- Set color scheme
+vim.cmd([[colorscheme tokyonight-night]])
