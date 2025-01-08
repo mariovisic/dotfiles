@@ -1,13 +1,10 @@
 -- Setup language server support with lsp-zero
 local lsp_zero = require("lsp-zero")
 
-lsp_zero.on_attach(function(client, bufnr)
+lsp_zero.on_attach(function(_, bufnr)
   lsp_zero.default_keymaps({ buffer = bufnr })
 
-  -- format files with LSP using gq
-  vim.keymap.set({ "n", "x" }, "gq", function()
-    vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
-  end, opts)
+  PluginKeyMappings.lsp_formatting()
 end)
 
 -- Setup specific language servers (manually installed) :)

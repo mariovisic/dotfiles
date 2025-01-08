@@ -8,12 +8,7 @@ return {
     local state = require("telescope.state")
     local actions = require("telescope.actions")
 
-    vim.keymap.set("n", "<C-P>", telescope_config.find_files, {})
-    vim.keymap.set("n", "<C-F>", telescope_config.live_grep, {})
-    vim.keymap.set("n", "<leader>fb", telescope_config.buffers, {})
-    vim.keymap.set("n", "<leader>fh", telescope_config.help_tags, {})
-
-    vim.keymap.set("n", "<leader>t", function()
+    local resume_function = function()
       local prompt_bufnr = vim.api.nvim_get_current_buf()
       local current_picker = action_state.get_current_picker(prompt_bufnr)
       local cached_pickers = state.get_global_key("cached_pickers")
@@ -34,17 +29,13 @@ return {
           vim.api.nvim_feedkeys(key, "n", false)
         end
       end
-    end)
+    end
+
+    PluginKeyMappings.telescope(telescope_config, resume_function)
 
     require("telescope").setup({
       defaults = {
-        mappings = {
-          -- I don't use the esc key as it's far away (I use ctrl+c instead).
-          -- So remap ctrl+c inside of telescope to exit insert mode. In
-          -- normal mode ctrl+c closes telescope
-          i = { ["<C-c>"] = { "<esc>", type = "command" } },
-          n = { ["<C-c>"] = "close" },
-        },
+        mappings = PluginKeyMappings.telescope_defaults(),
       },
     })
   end,

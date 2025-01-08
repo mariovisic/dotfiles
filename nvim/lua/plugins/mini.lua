@@ -1,4 +1,6 @@
 -- Mini: A collection of small plugins
+--
+
 return {
   "echasnovski/mini.nvim",
   config = function()
@@ -18,13 +20,8 @@ return {
       symbol = "|",
     })
 
-    -- Comment out lines with \c + vector
     require("mini.comment").setup({
-      mappings = {
-        comment = "<leader>c",
-        comment_visual = "<leader>c",
-        comment_line = "<leader>cc",
-      },
+      mappings = PluginKeyMappings.mini(),
     })
   end,
 }
