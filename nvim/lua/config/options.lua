@@ -5,7 +5,7 @@ vim.o.softtabstop = 2
 vim.o.expandtab = true
 
 -- Use the system clipboard when yanking/pasting
-vim.api.nvim_set_option("clipboard", "unnamed")
+vim.opt.clipboard = "unnamed"
 
 -- Disable netrw as it interferes with nvim-tree
 vim.g.loaded_netrw = 1
