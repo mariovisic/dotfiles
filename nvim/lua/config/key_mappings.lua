@@ -11,6 +11,9 @@ vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", {
   noremap = true,
 })
 
+-- <leader>f copies the current buffers relative file path
+vim.keymap.set({ "i", "n", "v" }, "<leader>f", ':let @* = expand("%")<cr>')
+
 PluginKeyMappings = {
   mini = function()
     return {
