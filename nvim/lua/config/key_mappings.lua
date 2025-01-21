@@ -41,11 +41,4 @@ PluginKeyMappings = {
       n = { ["<C-c>"] = "close" },
     }
   end,
-
-  lsp_formatting = function()
-    -- format files with LSP using gq
-    vim.keymap.set({ "n", "x" }, "gq", function()
-      vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
-    end, {})
-  end,
 }

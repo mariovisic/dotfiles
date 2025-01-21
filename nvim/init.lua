@@ -12,9 +12,6 @@ require("config.options")
 -- Setup Global key mappings
 require("config.key_mappings")
 
--- Format files on save
-require("config.format_on_save")
-
 -- Setup lazy to install and import packages
 require("config.lazy_package_manager")
 
