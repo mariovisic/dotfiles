@@ -3,6 +3,7 @@ return {
   "nvim-telescope/telescope.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
+    local telescope = require("telescope")
     local telescope_config = require("telescope.builtin")
     local action_state = require("telescope.actions.state")
     local state = require("telescope.state")
@@ -33,10 +34,12 @@ return {
 
     PluginKeyMappings.telescope(telescope_config, resume_function)
 
-    require("telescope").setup({
+    telescope.setup({
       defaults = {
         mappings = PluginKeyMappings.telescope_defaults(),
       },
     })
+
+    telescope.load_extension("fzf")
   end,
 }
