@@ -14,6 +14,7 @@ export PGOPTIONS='-c client_min_messages=WARNING'
 source $(brew --prefix)/opt/gitstatus/gitstatus.prompt.zsh
 
 # Setup Mise
+export PATH="$HOME/.local/bin:$PATH"
 eval "$(mise activate zsh --shims)"
 
 # Ferocia specific android setup
@@ -26,3 +27,6 @@ if [ -z ${ANDROID_HOME+x} ]; then
   export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
 fi
 
+
+# Ferocia specific project setup
+export WORKUP=0 # skip installing things when fiddling with git
