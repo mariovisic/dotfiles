@@ -38,6 +38,18 @@ return {
       defaults = {
         mappings = PluginKeyMappings.telescope_defaults(),
       },
+      pickers = {
+        live_grep = {
+          file_ignore_patterns = { "node_modules", ".git", ".venv" },
+          additional_args = function(_)
+            return { "--hidden" }
+          end,
+        },
+        find_files = {
+          file_ignore_patterns = { "node_modules", ".git", ".venv" },
+          hidden = true,
+        },
+      },
     })
 
     telescope.load_extension("fzf")
