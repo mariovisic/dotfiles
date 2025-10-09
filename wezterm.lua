@@ -12,12 +12,25 @@ config.keys = {
     action = act.Multiple({ act.ClearScrollback("ScrollbackAndViewport"), act.SendKey({ key = "L", mods = "CTRL" }) }),
   },
   -- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
-  { key = "LeftArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bb" }) },
   -- Make Option-Right equivalent to Alt-f; forward-word
+  { key = "LeftArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bb" }) },
   { key = "RightArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bf" }) },
+
+  -- Scroll up and down pages with Option+Up / Option+Down
+  { key = "UpArrow", mods = "OPT", action = wezterm.action.ScrollByPage(-1) },
+  { key = "DownArrow", mods = "OPT", action = wezterm.action.ScrollByPage(1) },
+
+  -- Scroll to the top and bottom with Option+Shift+Up / Option+Shift+Down
+  { key = "UpArrow", mods = "OPT|SHIFT", action = wezterm.action.ScrollToTop },
+  { key = "DownArrow", mods = "OPT|SHIFT", action = wezterm.action.ScrollToBottom },
 }
 
+config.enable_scroll_bar = true
+
 config.font_size = 18
+
+-- Use a larger scrollback size for more easily searching output!
+config.scrollback_lines = 50000
 
 -- START TAB STYLING !!!
 
