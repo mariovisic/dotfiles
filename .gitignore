@@ -1,1 +1,5 @@
+# Generated vim files
 vim/.netrwhist
+
+# Custom zsh configs that shouldn't get checked in
+zprofile.*

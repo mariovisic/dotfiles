@@ -6,8 +6,11 @@ task :default do
 
   perform("Creating empty folders") { create_folders }
   perform("Updating dotfiles") { git_pull }
+
   link_files
   link_nvim_config
+
+  install_brew_packages
 end
 
 def git_pull
@@ -44,4 +47,18 @@ def perform(name, &block)
   print " " * (50 - name.size)
   print "DONE"
   puts
+end
+
+def homebrew_installed?
+  `brew help`.size > 0 rescue false
+end
+
+def install_brew_packages
+  if homebrew_installed?
+    perform("Installing homebrew packages") do
+      `brew bundle`
+    end
+  else
+    puts "\n!!! homebrew not installed, visit https://brew.sh/ to install !!!\n\n"
+  end
 end
