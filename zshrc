@@ -13,3 +13,6 @@ alias vram_usage='output=$(ioreg -c "AGXAccelerator" | grep "PerformanceStatisti
 function watcha {
   watch $(alias "$@" | cut -d\' -f2)
 }
+
+# Setup autin
+eval "$(atuin init zsh)"
