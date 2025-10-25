@@ -91,4 +91,25 @@ end)
 
 -- END Tab Styling !!!
 
+-- START APPEARANCE !!!
+
+function get_appearance()
+  if wezterm.gui then
+    return wezterm.gui.get_appearance()
+  end
+  return "Dark"
+end
+
+function scheme_for_appearance(appearance)
+  if appearance:find("Dark") then
+    return "tokyonight_night"
+  else
+    return "tokyonight_day"
+  end
+end
+
+config.color_scheme = scheme_for_appearance(get_appearance())
+
+-- END APPEARANCE !!!
+
 return config
