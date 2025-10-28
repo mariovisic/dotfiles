@@ -102,13 +102,29 @@ end
 
 function scheme_for_appearance(appearance)
   if appearance:find("Dark") then
-    return "tokyonight_night"
+    return "Night Owl (Gogh)"
   else
-    return "tokyonight_day"
+    return "Paraiso (light) (terminal.sexy)"
   end
 end
 
 config.color_scheme = scheme_for_appearance(get_appearance())
+
+local color_scheme = wezterm.color.get_builtin_schemes()[config.color_scheme]
+
+config.colors = {
+  -- git status uses these colors within the 256 pallete, let's update them to match our theme :)
+  indexed = {
+    -- Green
+    [76] = color_scheme.ansi[3],
+    -- Yellow
+    [178] = color_scheme.ansi[4],
+    -- Blue
+    [39] = color_scheme.ansi[5],
+    -- Red
+    [196] = color_scheme.ansi[2],
+  },
+}
 
 -- END APPEARANCE !!!
 
