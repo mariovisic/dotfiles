@@ -17,6 +17,3 @@ require("config.lazy_package_manager")
 
 -- Setup Language Server Protocol (LSP) support
 require("config.language_server_protocol")
-
--- Set color scheme
-vim.cmd([[colorscheme tokyonight-night]])
