@@ -17,8 +17,10 @@ if (( $+commands[mise] )); then
 fi
 
 # Load additional zprofile configs!
-for file in $HOME/.zprofile.*; do
-  if [[ -e "$file" ]]; then
+zprofile_configs=( $HOME/.zprofile.*(N) )
+if (( ${#zprofile_configs[@]} > 0 )); then
+  for file in "${zprofile_configs[@]}"; do
     source "$file"
-  fi
-done
+  done
+fi
+
