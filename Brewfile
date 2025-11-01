@@ -1,6 +1,7 @@
 brew "ack"
 brew "atuin"
 cask "atuin-desktop"
+brew "neofetch"
 brew "neovim"
 brew "romkatv/gitstatus/gitstatus"
 brew "zsh-autocomplete"
