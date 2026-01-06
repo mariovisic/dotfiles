@@ -8,17 +8,17 @@ end)
 -- Setup specific language servers (manually installed) :)
 
 -- Typescript
-require("lspconfig").tsserver.setup({})
+vim.lsp.enable("ts_ls")
 
 -- Ruby
-require("lspconfig").sorbet.setup({})
-require("lspconfig").syntax_tree.setup({})
+vim.lsp.enable("sorbet")
+vim.lsp.enable("syntax_tree")
 
 -- Swift
-require("lspconfig").sourcekit.setup({})
+vim.lsp.enable("sourcekit")
 
 -- Lua
-require("lspconfig").lua_ls.setup({
+vim.lsp.config("lua_ls", {
   settings = {
     Lua = {},
   },
@@ -37,6 +37,7 @@ require("lspconfig").lua_ls.setup({
     client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, lua_opts.settings.Lua)
   end,
 })
+vim.lsp.enable("lua_ls")
 
 -- Setup tab autocomplete for lsp
 lsp_zero.omnifunc.setup({
