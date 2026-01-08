@@ -5,19 +5,11 @@ lsp_zero.on_attach(function(_, bufnr)
   lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
--- Setup specific language servers (manually installed) :)
+-- ================================ --
+-- Custom LSP server configurations --
+-- ================================ --
 
--- Typescript
-vim.lsp.enable("ts_ls")
-
--- Ruby
-vim.lsp.enable("sorbet")
-vim.lsp.enable("syntax_tree")
-
--- Swift
-vim.lsp.enable("sourcekit")
-
--- Lua
+-- Setup lua to be able to work on neovim config!
 vim.lsp.config("lua_ls", {
   settings = {
     Lua = {},
@@ -37,7 +29,24 @@ vim.lsp.config("lua_ls", {
     client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, lua_opts.settings.Lua)
   end,
 })
-vim.lsp.enable("lua_ls")
+
+-- Enable our LSPs, we don't automatically install anything, so will need to manually install all language servers!
+
+vim.lsp.enable({
+  -- Typescript
+  -- install: npm install -g typescript typescript-language-server
+  "ts_ls",
+
+  -- Ruby
+  "sorbet",
+  "syntax_tree",
+
+  -- Swift
+  "sourcekit",
+
+  -- Lua
+  "lua_ls",
+})
 
 -- Setup tab autocomplete for lsp
 lsp_zero.omnifunc.setup({
