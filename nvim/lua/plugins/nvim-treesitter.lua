@@ -1,11 +1,12 @@
 -- nvim-treesitter provides fast, fancy syntax highlighting.
 return {
   "nvim-treesitter/nvim-treesitter",
+  lazy = false,
   build = ":TSUpdate",
 
   config = function()
-    local configs = require("nvim-treesitter.configs")
-    configs.setup({
+    local config = require("nvim-treesitter.config")
+    config.setup({
       auto_install = true, -- Install language parsers as we need them.
 
       -- Pre-install language parsers we use often.
