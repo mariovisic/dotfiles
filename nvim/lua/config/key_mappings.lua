@@ -36,11 +36,19 @@ PluginKeyMappings = {
     }
   end,
 
+  -- Experiment using both leader + ctrl key mappings to figure
+  -- out which I actually use before locking one in :)
   telescope = function(telescope_config, resume_function)
-    vim.keymap.set("n", "<C-P>", telescope_config.find_files, {})
-    vim.keymap.set("n", "<C-F>", telescope_config.live_grep, {})
-    vim.keymap.set("n", "<leader>fb", telescope_config.buffers, {})
-    vim.keymap.set("n", "<leader>fh", telescope_config.help_tags, {})
+    vim.keymap.set("n", "<C-p>", telescope_config.find_files, {})
+    vim.keymap.set("n", "<C-f>", telescope_config.live_grep, {})
+    vim.keymap.set("n", "<C-b>", telescope_config.buffers, {})
+    vim.keymap.set("n", "<C-h>", telescope_config.help_tags, {})
+    vim.keymap.set("n", "<C-t>", resume_function, {})
+
+    vim.keymap.set("n", "<leader>p", telescope_config.find_files, {})
+    vim.keymap.set("n", "<leader>f", telescope_config.live_grep, {})
+    vim.keymap.set("n", "<leader>b", telescope_config.buffers, {})
+    vim.keymap.set("n", "<leader>h", telescope_config.help_tags, {})
     vim.keymap.set("n", "<leader>t", resume_function, {})
   end,
 
