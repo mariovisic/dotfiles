@@ -21,7 +21,7 @@ return {
       typescriptreact = { "prettierd" },
     },
     default_format_opts = {
-      lsp_format = "fallback",
+      lsp_format = "never",
     },
     format_on_save = {
       timeout_ms = 500,

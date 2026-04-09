@@ -13,3 +13,6 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Color scheme
 vim.o.termguicolors = true
+
+-- Diagnostic options (these show inline errors/warnings in code)
+vim.diagnostic.config({ virtual_text = true })

@@ -14,6 +14,13 @@ vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", {
 -- <leader>f copies the current buffers relative file path
 vim.keymap.set({ "i", "n", "v" }, "<leader>f", ':let @* = expand("%")<cr>')
 
+-- <leader>r opens nvim-spectre for find/replace
+vim.keymap.set({ "i", "n", "v" }, "<leader>r", '<cmd>Spectre<cr>')
+
+-- Diagnostics Key mappings
+-- g+l opens the diagnostic message in a floating window!
+vim.keymap.set("n", "gl", vim.diagnostic.open_float)
+
 PluginKeyMappings = {
   mini = function()
     return {
