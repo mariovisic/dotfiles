@@ -23,6 +23,12 @@ vim.lsp.config("lua_ls", {
   end,
 })
 
+
+-- Tell sorbet to look for a 'sorbet' folder to find the root of the project!
+vim.lsp.config("sorbet", {
+  root_markers = { "sorbet" }
+})
+
 -- Enable our LSPs, we don't automatically install anything, so will need to manually install all language servers!
 
 vim.lsp.enable({

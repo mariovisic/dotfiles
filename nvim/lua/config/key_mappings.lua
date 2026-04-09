@@ -21,6 +21,11 @@ vim.keymap.set({ "i", "n", "v" }, "<leader>r", '<cmd>Spectre<cr>')
 -- g+l opens the diagnostic message in a floating window!
 vim.keymap.set("n", "gl", vim.diagnostic.open_float)
 
+-- LSP key mappings
+-- g+d navigates to the function definition!
+vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
+
 PluginKeyMappings = {
   mini = function()
     return {
