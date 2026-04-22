@@ -24,9 +24,13 @@ vim.lsp.config("lua_ls", {
 })
 
 
--- Tell sorbet to look for a 'sorbet' folder to find the root of the project!
+
+-- Hack to fix sorbet CWD ... only works on 2nd buffer annoyingly!
 vim.lsp.config("sorbet", {
-  root_markers = { "sorbet" }
+  reuse_client = function(client, config)
+    config.cmd_cwd = config.root_dir
+    return client.config.cmd_cwd == config.cmd_cwd
+  end,
 })
 
 -- Enable our LSPs, we don't automatically install anything, so will need to manually install all language servers!
