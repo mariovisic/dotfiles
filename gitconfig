@@ -1,5 +1,5 @@
 [user]
-  name = Mario Visic
+  name = Mario Lesniak
   email = mario@mariovisic.com
 [color]
   diff = auto
@@ -10,6 +10,7 @@
   autosetupremote = true
 [core]
   excludesfile = ~/.gitignore
+  editor = nvim
 [alias]
   logg = "log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(magenta)<%an>%Creset' --abbrev-commit --date=relative"
   signoff = '!git-signoff'
@@ -26,4 +27,4 @@
 [pull]
   ff = only
 [init]
-	defaultBranch = main
+  defaultBranch = main

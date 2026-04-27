@@ -1,7 +1,3 @@
--- Use tab for autocomplete!
-vim.api.nvim_set_keymap("i", "<Tab>", "<C-n>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("i", "<S-Tab>", "<C-p>", { noremap = true, silent = true })
-
 -- I use ctrl+c instead of escape, but ctrl+c doesn't trigger some events which
 -- are needed for LSP, let's map ctrl+c to match escape to get this behaviour
 vim.keymap.set({ "i", "n", "v" }, "<C-C>", "<esc>")
@@ -15,7 +11,7 @@ vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", {
 vim.keymap.set({ "i", "n", "v" }, "<leader>f", ':let @* = expand("%")<cr>')
 
 -- <leader>r opens nvim-spectre for find/replace
-vim.keymap.set({ "i", "n", "v" }, "<leader>r", '<cmd>Spectre<cr>')
+vim.keymap.set({ "i", "n", "v" }, "<leader>r", "<cmd>Spectre<cr>")
 
 -- Diagnostics Key mappings
 -- g+l opens the diagnostic message in a floating window!
@@ -25,6 +21,11 @@ vim.keymap.set("n", "gl", vim.diagnostic.open_float)
 -- g+d navigates to the function definition!
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
+
+-- Map ctrl+n to open the autocomplete dialog, scroll if already open!
+vim.keymap.set("i", "<C-n>", function()
+  return vim.fn.pumvisible() == 1 and "<C-n>" or "<Cmd>=MiniCompletion.complete_twostage()<CR>"
+end, { expr = true })
 
 PluginKeyMappings = {
   mini = function()
