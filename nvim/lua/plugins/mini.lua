@@ -23,5 +23,7 @@ return {
     require("mini.comment").setup({
       mappings = PluginKeyMappings.mini(),
     })
+
+    require("mini.completion").setup()
   end,
 }

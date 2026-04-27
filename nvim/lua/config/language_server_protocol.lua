@@ -8,7 +8,6 @@
 vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
-
       diagnostics = { globals = { "vim" } },
     },
   },
@@ -32,7 +31,6 @@ vim.lsp.config("sorbet", {
 })
 
 -- Enable our LSPs, we don't automatically install anything, so will need to manually install all language servers!
-
 vim.lsp.enable({
   -- Typescript
   -- install: npm install -g typescript typescript-language-server
@@ -40,6 +38,7 @@ vim.lsp.enable({
 
   -- Ruby
   "sorbet",
+  "ruby_lsp", -- install: gem install ruby-lsp
   "syntax_tree",
 
   -- Swift

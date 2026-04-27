@@ -19,5 +19,8 @@ require("config.lazy_package_manager")
 require("config.language_server_protocol")
 require("config.language_server_protocol_monkey_c")
 
+-- Setup treesitter (advanced syntax detection, instead of vim regexp
+require("config.treesitter")
+
 -- Setup loading screen (alpha)
 require("config.alpha")
