@@ -2,7 +2,7 @@ require "rake"
 
 desc "symlink all dot files into the home directory"
 task :default do
-  @ignored_files = %w[Rakefile README.md nvim.init.lua]
+  @ignored_files = %w[nvim Rakefile README.md nvim.init.lua]
 
   perform("Creating empty folders") { create_folders }
   perform("Updating dotfiles") { git_pull }
