@@ -17,3 +17,7 @@ require("config.lazy_package_manager")
 
 -- Setup Language Server Protocol (LSP) support
 require("config.language_server_protocol")
+require("config.language_server_protocol_monkey_c")
+
+-- Setup loading screen (alpha)
+require("config.alpha")

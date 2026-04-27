@@ -23,8 +23,6 @@ vim.lsp.config("lua_ls", {
   end,
 })
 
-
-
 -- Hack to fix sorbet CWD ... only works on 2nd buffer annoyingly!
 vim.lsp.config("sorbet", {
   reuse_client = function(client, config)
