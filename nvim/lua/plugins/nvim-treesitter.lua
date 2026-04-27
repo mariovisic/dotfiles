@@ -5,7 +5,7 @@ return {
   build = ":TSUpdate",
 
   config = function()
-    local config = require("nvim-treesitter.config")
+    local config = require("nvim-treesitter.configs")
     config.setup({
       auto_install = true, -- Install language parsers as we need them.
 
