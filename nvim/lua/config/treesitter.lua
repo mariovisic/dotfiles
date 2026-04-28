@@ -7,7 +7,6 @@ local treesitterLanguages = {
   "html",
   "javascript",
   "json",
-  "jsonc",
   "lua",
   "markdown",
   "markdown_inline",
