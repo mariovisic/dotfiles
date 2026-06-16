@@ -1,3 +1,4 @@
+-- Automatically set dark/light appearance based on OS setting
 return {
   "f-person/auto-dark-mode.nvim",
   opts = {

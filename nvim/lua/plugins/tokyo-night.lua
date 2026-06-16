@@ -1,4 +1,4 @@
--- Color theme
+-- A set of colorschemes
 return {
   "folke/tokyonight.nvim",
   lazy = false,
