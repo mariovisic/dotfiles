@@ -10,6 +10,9 @@ export EDITOR="nvim"
 # Do not display postgres info unless it is a warning or error.
 export PGOPTIONS='-c client_min_messages=WARNING'
 
+# Use colima socket for docker tools :)
+export DOCKER_HOST=unix://$HOME/.colima/docker.sock
+
 # Setup Mise
 export PATH="$HOME/.local/bin:$PATH"
 if (( $+commands[mise] )); then
