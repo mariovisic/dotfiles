@@ -1,3 +1,10 @@
 font-family = "JetBrains Mono"
 font-size = 18
 theme = "Banana Blueberry"
+macos-option-as-alt = true
+scrollback-limit = 524288000
+
+keybind = super+arrow_up=scroll_page_up
+keybind = super+arrow_down=scroll_page_down
+keybind = super+shift+arrow_up=scroll_to_top
+keybind = super+shift+arrow_down=scroll_to_bottom
