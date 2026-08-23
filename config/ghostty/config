@@ -4,7 +4,9 @@ theme = "Banana Blueberry"
 macos-option-as-alt = true
 scrollback-limit = 524288000
 
-keybind = super+arrow_up=scroll_page_up
-keybind = super+arrow_down=scroll_page_down
-keybind = super+shift+arrow_up=scroll_to_top
-keybind = super+shift+arrow_down=scroll_to_bottom
+
+# I would prefer to use cmd+up / cmd+down to scroll a page
+# Then use shift to move to top/bottom, but for some reason
+# mapping cmd+up/down doesn't work, it scrolls the whole screen!
+keybind = super+shift+arrow_up=scroll_page_up
+keybind = super+shift+arrow_down=scroll_page_down
