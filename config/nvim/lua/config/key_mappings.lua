@@ -8,7 +8,7 @@ vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", {
 })
 
 -- <leader>f copies the current buffers relative file path
-vim.keymap.set({ "i", "n", "v" }, "<leader>f", ':let @* = expand("%")<cr>')
+vim.keymap.set({ "i", "n", "v" }, "<leader>f", ':let @* = expand("%")<cr>:echo "File: " .. expand("%")<cr>')
 
 -- <leader>r opens nvim-spectre for find/replace
 vim.keymap.set({ "i", "n", "v" }, "<leader>r", "<cmd>Spectre<cr>")
