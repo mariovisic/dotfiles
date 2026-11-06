@@ -55,6 +55,15 @@ vim.lsp.config("sorbet", {
   end,
 })
 
+-- Disable Formatting for ts_ls as we use oxfmt instead!
+vim.lsp.config("ts_ls", {
+  on_attach = function(client, bufnr)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentFormattingRangeProvider = false
+  end,
+})
+
+
 vim.lsp.config("ruby_lsp", {
   cmd_env = {
     RUBY_LSP_BYPASS_TYPECHECKER = "yes",
@@ -78,11 +87,32 @@ vim.lsp.config("ruby_lsp", {
   end,
 })
 
+vim.api.nvim_create_user_command("FormatDisable", function()
+  vim.g.disable_autoformat = true
+end, {
+  desc = "Disable autoformat-on-save",
+  bang = true,
+})
+vim.api.nvim_create_user_command("FormatEnable", function()
+  vim.g.disable_autoformat = false
+end, {
+  desc = "Re-enable autoformat-on-save",
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function(bufnr)
+    if not vim.g.disable_autoformat then
+      vim.lsp.buf.format({ async = false })
+    end
+  end,
+})
+
 -- Enable our LSPs, we don't automatically install anything, so will need to manually install all language servers!
 vim.lsp.enable({
   -- Typescript
-  -- install: npm install -g typescript typescript-language-server
-  "ts_ls",
+  "oxfmt",  -- install: npm install -g oxfmt
+  "ts_ls",  -- install: npm install -g typescript typescript-language-server
   "eslint", -- install: npm install -g vscode-langservers-extracted
 
   -- Ruby
