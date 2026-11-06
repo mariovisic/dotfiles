@@ -83,6 +83,7 @@ vim.lsp.enable({
   -- Typescript
   -- install: npm install -g typescript typescript-language-server
   "ts_ls",
+  "eslint", -- install: npm install -g vscode-langservers-extracted
 
   -- Ruby
   "sorbet",
